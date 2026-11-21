@@ -1,0 +1,748 @@
+﻿<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Version>16.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>10296</WindowHeight>
+  <WindowWidth>23040</WindowWidth>
+  <WindowTopX>32767</WindowTopX>
+  <WindowTopY>32767</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="Segoe UI" ss:Color="#333333"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s63">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Font ss:FontName="Segoe UI" ss:Size="14" ss:Color="#333399" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s65">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Font ss:FontName="Segoe UI" ss:Color="#666699" ss:Italic="1"/>
+  </Style>
+  <Style ss:ID="s66">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
+     ss:Color="#1E3A8A"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#CBD5E1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#CBD5E1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#CBD5E1"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="10.5" ss:Color="#FFFFFF" ss:Bold="1"/>
+   <Interior ss:Color="#1E40AF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s67">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+   </Borders>
+   <Font ss:FontName="Consolas" ss:Size="9.5" ss:Color="#333333" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s68">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s69">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+   </Borders>
+   <Font ss:FontName="Consolas" ss:Size="9.5" ss:Color="#333333"/>
+   <NumberFormat ss:Format="Standard"/>
+  </Style>
+  <Style ss:ID="s70">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="9.5" ss:Color="#339966"/>
+  </Style>
+  <Style ss:ID="s71">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#E2E8F0"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="9" ss:Color="#333399"/>
+  </Style>
+  <Style ss:ID="s73">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Double" ss:Weight="3"
+     ss:Color="#0F172A"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#0F172A"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Color="#333333" ss:Bold="1"/>
+   <Interior ss:Color="#F1F5F9" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s75">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Double" ss:Weight="3"
+     ss:Color="#0F172A"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#0F172A"/>
+   </Borders>
+   <Font ss:FontName="Consolas" ss:Size="10.5" ss:Color="#333333" ss:Bold="1"/>
+   <Interior ss:Color="#F1F5F9" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="Standard"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Previous GAAP Trial Balance">
+  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="61" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="100.19999999999999"
+   ss:DefaultRowHeight="19.950000000000003">
+   <Column ss:Width="85.2"/>
+   <Column ss:Width="300"/>
+   <Column ss:Width="160.20000000000002"/>
+   <Column ss:Width="105" ss:Span="1"/>
+   <Column ss:Index="6" ss:Width="79.800000000000011"/>
+   <Column ss:Width="169.8"/>
+   <Column ss:Width="340.2"/>
+   <Row ss:AutoFitHeight="0" ss:Height="25.95">
+    <Cell ss:MergeAcross="7" ss:StyleID="s63"><Data ss:Type="String">Apex Precision Engineering Ltd. - Audited Trial Balance as on 31 March 2026</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="18">
+    <Cell ss:MergeAcross="7" ss:StyleID="s65"><Data ss:Type="String">Prepared under Previous Indian GAAP (Accounting Standards - AS) | Currencies in INR (Rs. in Lakhs) | Balanced (Debits = Credits = Rs. 85,571.00 Lakhs)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="10.050000000000001"/>
+   <Row ss:AutoFitHeight="0" ss:Height="25.95">
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Account Code</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Account Description</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Group</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Debit (Rs. Lakhs)</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Credit (Rs. Lakhs)</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Nature</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Existing AS Classification</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Key Ind AS Conversion Point Touched</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">1010</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Paid-up Equity Share Capital (Face Value Rs. 10)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Shareholders Funds</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">5000</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Equity</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Share Capital</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 1: Share capital disclosures; no classification change.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">1020</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">8% Non Cumulative Optionally Convertible Preference Shares</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Shareholders Funds</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">2000</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Equity</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Share Capital</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 32: Reclassified from Equity to Financial Liability (Long-Term Borrowings).</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">1030</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Securities Premium Account</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Reserves and Surplus</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">4500</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Equity</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Reserves and Surplus</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 1 / Ind AS 101: Presentation under Other Equity (Part B SOCIE).</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">1040</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">General Reserve</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Reserves and Surplus</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">8200</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Equity</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Reserves and Surplus</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 101: Free reserve absorbing cumulative transition differences.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">1050</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Surplus in Statement of Profit and Loss (Opening Balance)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Reserves and Surplus</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">8053</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Equity</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Reserves and Surplus</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 101.11: Opening Retained Earnings absorbs transition remeasurements.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">2010</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Term Loan from HDFC Bank Ltd. (Secured)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Non-Current Liabilities</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">8000</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Liability</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Long-Term Borrowings</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 109: Measured at Amortised Cost using Effective Interest Rate (EIR).</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">2020</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Unamortised Upfront Loan Processing Fee (HDFC Loan)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Non-Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">45</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Other Non-Current Assets</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 109: Processing fee netted off against term loan borrowing under EIR.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">2030</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Deferred Tax Liability (Net) - Previous GAAP AS 22</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Non-Current Liabilities</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">680</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Liability</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Deferred Tax Liabilities</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 12: Transition from AS 22 timing difference to Balance Sheet temporary difference.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">2040</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Provision for Gratuity (Long-Term)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Non-Current Liabilities</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">320</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Liability</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Long-Term Provisions</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 19: Long-term employee liability; actuarial gain/loss routed to OCI.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">2050</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Provision for Decommissioning / Site Restoration</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Non-Current Liabilities</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Liability</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Not Recognized under AS</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 16 / Ind AS 37: Decommissioning / Site Restoration capitalised into PPE.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">2110</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Short-Term Working Capital Loan (SBI Cash Credit)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Liabilities</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">2850</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Liability</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Short-Term Borrowings</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 109 / Ind AS 7: Short-term cash credit; separate cash flow disclosure.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">2120</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Trade Payables - Dues to Micro and Small Enterprises (MSME)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Liabilities</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">420</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Liability</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Trade Payables MSME</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Schedule III (Division II): Mandatory separate MSME disclosure &amp; aging schedule.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">2130</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Trade Payables - Other Creditors for Goods &amp; Services</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Liabilities</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3850</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Liability</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Trade Payables Others</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Schedule III (Division II): Trade payables aging schedule (&lt;1 yr, 1-2 yrs, &gt;3 yrs).</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">2140</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Maturities of Long-Term Debt (HDFC Term Loan)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Liabilities</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">1500</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Liability</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Other Current Liabilities</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 1: Current portion of long-term borrowings presented in Current Borrowings.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">2150</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Statutory Dues Payable (GST TDS PF ESIC)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Liabilities</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">215</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Liability</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Other Current Liabilities</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 1: Statutory current liabilities (GST, TDS, PF, ESIC).</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">2160</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Advance from Customers (Unearned Revenue)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Liabilities</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">340</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Liability</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Other Current Liabilities</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 115: Contract Liability (Customer advances before performance obligation).</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">2170</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Provision for Product Warranties (Current)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Liabilities</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">180</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Liability</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Short-Term Provisions</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 37: Assurance-type warranty provision vs Ind AS 115 service-type warranty.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">3010</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Freehold Factory Land</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Non-Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">5200</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Tangible Fixed Assets</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 101: Deemed Cost exemption elected (carrying value under Previous GAAP).</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">3020</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Factory Buildings (Net Carrying Amount)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Non-Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">8650</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Tangible Fixed Assets</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 16: Component accounting &amp; separate useful life review.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">3030</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Plant Machinery and Heavy Equipment (Net)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Non-Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">19050</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Tangible Fixed Assets</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 16: PPE addition of decommissioning asset; revised depreciation.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">3040</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Capital Work-in-Progress (Paint Shop Automated Line)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Non-Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">850</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">CWIP</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Schedule III (Division II): CWIP aging schedule &amp; completion timeline disclosure.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">3050</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Computer Software &amp; ERP License (Intangibles)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Non-Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">210</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Intangible Assets</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 38: Software licenses finite useful life amortization.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">3060</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Commercial Office Building Rented Out to Third Party</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Non-Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">1200</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Non-Current Investments</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 40: Reclassified from PPE/Investments to separate Investment Property line.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">3070</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Investment in Equity Shares of Zenith Auto Components Pvt Ltd</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Non-Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">450</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Non-Current Investments</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 109: Unquoted equity designated irrevocably as Fair Value through OCI (FVTOCI).</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">3080</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Investment in Growth / Liquid Debt Mutual Funds</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">950</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Investments</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 109: Liquid debt mutual funds fair valued through Profit &amp; Loss (FVTPL).</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">3090</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Security Deposit Paid for Leased Corporate Head Office</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Non-Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Long-Term Loans and Advances</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 109: Security deposit discounted to Present Value; prepaid lease asset created.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">4010</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Raw Materials and Components Inventory</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">2840</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Inventories</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 2: Inventories valued at lower of cost and net realizable value.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">4020</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Work-in-Progress Inventory</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">1150</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Inventories</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 2: Cost of conversion &amp; overhead absorption.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">4030</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Finished Goods Inventory (Precision Parts)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">1680</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Inventories</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 2: Finished goods valuation &amp; NRV testing.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">4040</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Trade Receivables - Domestic Automotive OEMs</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">6850</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Trade Receivables</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 109: Forward-looking Expected Credit Loss (ECL) provisioning model.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">4050</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Provision for Doubtful Debts (Previous GAAP Specific)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">65</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Contra-Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Provision for Bad Debts</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 109: Replaced by ECL allowance matrix deduction against gross debtors.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">4060</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Cash in Hand</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">18</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Cash and Cash Equivalents</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 7: Cash in hand for Cash Flow Statement.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">4070</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Balances with Scheduled Banks in Current Accounts</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">520</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Cash and Cash Equivalents</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 7: Bank current accounts for Cash &amp; Cash Equivalents.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">4080</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Bank Fixed Deposits (Maturity 3 to 12 months)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">650</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Other Bank Balances</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 7: Other Bank Balances (Earmarked / FD &gt; 3 months).</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">4090</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Prepaid Rent (Current Office Lease)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">36</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Other Current Assets</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 116: Transition rent adjustment; absorbed into ROU Asset / Lease Liability.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">4100</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">GST Input Tax Credit Receivable &amp; Advance Tax</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Assets</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">386</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Asset</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Other Current Assets</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 12: Advance income tax netted against current tax liability.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">5010</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Revenue from Sale of Manufactured Products</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Revenue</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">38400</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Revenue</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Revenue from Operations</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 115: 5-step revenue recognition; unbundling prompt discounts &amp; service warranty.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">5020</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Other Operating Revenue (Scrap Sales &amp; Incentives)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Revenue</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">420</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Revenue</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Other Operating Revenue</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 115: Scrap sales &amp; variable incentives.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">5030</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Rental Income from Commercial Office Building</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Revenue</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">120</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Revenue</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Other Income</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 40 / Ind AS 116: Rental income from Investment Property.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">5040</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Interest Income on Bank Deposits &amp; Security Deposits</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Revenue</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">58</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Revenue</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Other Income</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 109: Finance income including unwinding of interest on security deposits.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">6010</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Cost of Materials Consumed</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Expenses</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">21850</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Expense</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Cost of Materials Consumed</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Schedule III: Direct raw material consumption disclosure.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">6020</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Changes in Inventories of Finished Goods &amp; WIP</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Expenses</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">400</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Expense</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Changes in Inventories</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Schedule III: Changes in inventories of finished goods, WIP &amp; stock-in-trade.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">6030</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Salaries Wages and Bonus</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Expenses</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">4120</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Expense</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Employee Benefit Expense</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 19: Short-term compensated absences &amp; benefits.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">6040</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Staff Gratuity and Actuarial Cost (AS 15)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Expenses</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">82</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Expense</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Employee Benefit Expense</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 19: Actuarial remeasurement gains/losses reclassified from P&amp;L to OCI.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">6050</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Interest on Term Loan &amp; Working Capital Loan</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Expenses</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">1045</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Expense</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Finance Costs</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 23 / Ind AS 109: Borrowing costs &amp; effective interest on lease liabilities.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">6060</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Operating Rent for Corporate Office Building</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Expenses</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">144</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Expense</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Other Expenses</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 116: Replaced by ROU Asset Depreciation and Lease Liability Finance Cost.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">6070</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Depreciation on Property Plant and Equipment</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Expenses</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">1320</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Expense</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Depreciation</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 16 / Ind AS 116: Depreciation on PPE and Right-of-Use Assets.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">6080</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Amortisation of Software Intangibles</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Expenses</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">70</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Expense</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Amortisation</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 38: Amortisation of intangible assets.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">6090</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Power Fuel and Utilities</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Expenses</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">2180</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Expense</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Other Expenses</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Schedule III: Power, fuel &amp; manufacturing utilities.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">6100</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Repairs &amp; Maintenance to Plant &amp; Buildings</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Expenses</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">580</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Expense</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Other Expenses</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 16: Repairs &amp; maintenance vs capital replacement recognition.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">6110</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Legal Professional &amp; Secretarial Fees</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Expenses</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">165</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Expense</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Other Expenses</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Schedule III: Legal &amp; professional charges (auditor remuneration break-up).</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">6120</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Provision for Doubtful Debts Expense (AS Specific)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Expenses</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Expense</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Other Expenses</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 109: ECL impairment loss recognized in Statement of Profit &amp; Loss.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">6130</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Other Administrative &amp; Selling Overhead Expenses</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Expenses</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">1845</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Expense</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Other Expenses</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Schedule III: General corporate administration overheads.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">7010</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Income Tax Expense</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Tax Expenses</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">1250</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Expense</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Current Tax</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 12: Current tax based on applicable statutory corporate tax rate.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">7020</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Deferred Tax Expense (AS 22)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Tax Expenses</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">70</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Expense</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Deferred Tax</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Ind AS 12: Deferred tax credit/charge on balance sheet temporary differences.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="24">
+    <Cell ss:MergeAcross="2" ss:StyleID="s73"><Data ss:Type="String">TOTAL TRIAL BALANCE (Rs. in Lakhs):</Data></Cell>
+    <Cell ss:StyleID="s75" ss:Formula="=SUM(R5C4:R59C4)"><Data ss:Type="Number">85571</Data></Cell>
+    <Cell ss:StyleID="s75" ss:Formula="=SUM(R5C5:R59C5)"><Data ss:Type="Number">85571</Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="s73"><Data ss:Type="String">Difference: Rs. 0.00 (100% Balanced)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0"/>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

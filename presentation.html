@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AS to Ind AS Conversion Assistant - Executive Presentation</title>
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --bg-card-dark: #1e293b;
+      --bg-light: #f8fafc;
+      --bg-card-light: #ffffff;
+      --primary: #2563eb;
+      --primary-light: #eff6ff;
+      --accent-cyan: #38bdf8;
+      --accent-amber: #d97706;
+      --accent-green: #059669;
+      --text-dark: #0f172a;
+      --text-muted: #64748b;
+      --text-light: #ffffff;
+      --border-light: #e2e8f0;
+      --border-dark: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #090d16;
+      color: #334155;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Fixed Aspect Ratio Presentation Viewport (16:9 Widescreen) */
+    .deck-container {
+      width: 1200px;
+      height: 675px;
+      position: relative;
+      background: var(--bg-light);
+      border-radius: 12px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+    }
+
+    /* Slide Base */
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      padding: 44px 56px;
+      flex-direction: column;
+      justify-content: flex-start;
+      animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.99); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Top Accent Line */
+    .slide-accent-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #2563eb, #38bdf8);
+    }
+
+    /* Slide Headers */
+    .slide-header {
+      margin-bottom: 24px;
+    }
+
+    .slide-category {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .slide-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.5px;
+    }
+
+    .slide-subtitle {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* SLIDE 1 SPECIFICS (Dark Cover) */
+    .slide-dark {
+      background: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    .badge-pill-cyan {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent-cyan);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      width: fit-content;
+    }
+
+    .cover-title {
+      font-size: 38px;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #ffffff;
+      margin-bottom: 12px;
+      letter-spacing: -0.8px;
+    }
+
+    .cover-subtitle {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #94a3b8;
+      max-width: 900px;
+      margin-bottom: 26px;
+    }
+
+    .team-panel {
+      background: var(--bg-card-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: 10px;
+      padding: 20px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .team-panel-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      flex: 1;
+    }
+
+    .member-card {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(71, 85, 105, 0.5);
+      border-radius: 8px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .member-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .member-info h4 {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .wro-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(56, 189, 248, 0.2);
+      color: var(--accent-cyan);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .member-info p {
+      font-size: 11.5px;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    /* SLIDE 2: 3 COLUMN PROBLEM CARDS */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      flex: 1;
+    }
+
+    .card-problem {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-top: 4px solid var(--accent-amber);
+      border-radius: 10px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+
+    .card-problem .num-bubble {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #fef3c7;
+      color: var(--accent-amber);
+      font-weight: 800;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .card-problem h3 {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .card-problem .sub-head {
+      font-size: 12px;
+      font-weight: 700;
+      color: #b45309;
+      margin-bottom: 14px;
+    }
+
+    .bullet-list {
+      list-style: none;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 9px;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      color: var(--accent-amber);
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    /* SLIDE 3: 4 PILLARS (2x2 GRID) */
+    .grid-2x2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      flex: 1;
+    }
+
+    .solution-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.04);
+    }
+
+    .pill-tag {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 3px 10px;
+      border-radius: 9999px;
+      width: fit-content;
+      margin-bottom: 10px;
+    }
+
+    .solution-card h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+
+    .solution-card ul {
+      list-style: none;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .solution-card ul li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 7px;
+    }
+
+    .solution-card ul li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: bold;
+    }
+
+    /* SLIDE 4: 4-PHASE TIMELINE */
+    .grid-4-phases {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      flex: 1;
+    }
+
+    .phase-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.04);
+    }
+
+    .phase-header {
+      background: var(--bg-dark);
+      color: #93c5fd;
+      padding: 10px 14px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .phase-body {
+      padding: 16px 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .phase-title {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .phase-bullets {
+      list-style: none;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .phase-bullets li {
+      position: relative;
+      padding-left: 15px;
+      margin-bottom: 8px;
+    }
+
+    .phase-bullets li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    /* SLIDE 5: CONCLUSION & IMPACT */
+    .conclusion-grid {
+      display: grid;
+      grid-template-columns: 1.7fr 1fr;
+      gap: 20px;
+      flex: 1;
+    }
+
+    .key-takeaway-box {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .takeaway-item {
+      margin-bottom: 16px;
+    }
+
+    .takeaway-item h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .takeaway-item p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      padding-left: 24px;
+    }
+
+    .metrics-col {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .metric-card {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: 10px;
+      padding: 18px 20px;
+      color: #ffffff;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .metric-val {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      font-family: monospace;
+      margin-bottom: 2px;
+    }
+
+    .metric-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .metric-sub {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    /* Bottom Control Bar */
+    .controls {
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 1200px;
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-nav {
+      background: #1e293b;
+      color: #f1f5f9;
+      border: 1px solid #334155;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-nav:hover {
+      background: #334155;
+      border-color: #475569;
+    }
+
+    .slide-indicator {
+      font-weight: 700;
+      color: #cbd5e1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Presentation Deck Container -->
+  <div class="deck-container">
+
+    <!-- ================================================================= -->
+    <!-- SLIDE 1: TOPIC HEADING & 4 MEMBERS WITH WRO NO. -->
+    <!-- ================================================================= -->
+    <div class="slide slide-dark active" id="slide-1">
+      <div class="slide-accent-line"></div>
+      
+      <div class="badge-pill-cyan">
+        <span>⚡ Statutory Financial Automation</span>
+      </div>
+
+      <h1 class="cover-title">
+        AS to Ind AS Applicability &amp; Financial<br>Statement Conversion Assistant
+      </h1>
+
+      <p class="cover-subtitle">
+        Statutory Decision Support &amp; Conversion Platform under MCA Companies (Ind AS) Rules, 2015, Rule 4 Net Worth Roadmap &amp; Ind AS 101 First-Time Adoption Framework
+      </p>
+
+      <div class="team-panel">
+        <div class="team-panel-title">
+          <span>👥 Project Research &amp; Implementation Team</span>
+        </div>
+
+        <div class="team-grid">
+          <div class="member-card">
+            <div class="member-avatar">M1</div>
+            <div class="member-info">
+              <h4>Candidate Name 1 <span class="wro-badge">WRO 0689421</span></h4>
+              <p>Ind AS Technical Advisory &amp; MCA Rule 4 Roadmap</p>
+            </div>
+          </div>
+
+          <div class="member-card">
+            <div class="member-avatar">M2</div>
+            <div class="member-info">
+              <h4>Candidate Name 2 <span class="wro-badge">WRO 0712394</span></h4>
+              <p>Financial Statement Architecture &amp; ICAI Notes 1–14</p>
+            </div>
+          </div>
+
+          <div class="member-card">
+            <div class="member-avatar">M3</div>
+            <div class="member-info">
+              <h4>Candidate Name 3 <span class="wro-badge">WRO 0698154</span></h4>
+              <p>Conversion Adjustments &amp; Flagged Journal Entries</p>
+            </div>
+          </div>
+
+          <div class="member-card">
+            <div class="member-avatar">M4</div>
+            <div class="member-info">
+              <h4>Candidate Name 4 <span class="wro-badge">WRO 0705632</span></h4>
+              <p>Excel Automation &amp; Client-Side Full Stack Engine</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- SLIDE 2: THE PROBLEM STATEMENT -->
+    <!-- ================================================================= -->
+    <div class="slide" id="slide-2">
+      <div class="slide-accent-line"></div>
+      
+      <div class="slide-header">
+        <span class="slide-category">The Problem Statement</span>
+        <h2 class="slide-title">Critical Pain Points in Indian Corporate AS-to-Ind AS Transition</h2>
+        <p class="slide-subtitle">Challenges faced by CFOs, accounting teams, and practitioners transitioning from Previous Indian GAAP</p>
+      </div>
+
+      <div class="grid-3">
+        <!-- Card 1 -->
+        <div class="card-problem">
+          <div class="num-bubble">01</div>
+          <h3>Complex Statutory Rules</h3>
+          <div class="sub-head">MCA Rule 4 &amp; Net Worth Ambiguity</div>
+          <ul class="bullet-list">
+            <li>Non-linear thresholds (₹250 Cr, listed equity/debt, NBFC Phase I/II).</li>
+            <li>Confusion connecting reference audit year to the statutory date of transition.</li>
+            <li>Holding, subsidiary, associate &amp; JV group cascade triggers often missed.</li>
+            <li>Section 2(57) Net Worth computation disputes with statutory auditors.</li>
+          </ul>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card-problem">
+          <div class="num-bubble">02</div>
+          <h3>Fragile Spreadsheets</h3>
+          <div class="sub-head">Manual Mapping &amp; Reconciliation Bottlenecks</div>
+          <ul class="bullet-list">
+            <li>Broken Excel formula chains during complex trial balance restatements.</li>
+            <li>Lack of simultaneous dual traceability between Previous GAAP and Ind AS.</li>
+            <li>Missing audit trail for opening balance adjustments under Ind AS 101.</li>
+            <li>Data confidentiality risks when uploading client financials to unvetted cloud tools.</li>
+          </ul>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card-problem">
+          <div class="num-bubble">03</div>
+          <h3>Schedule III Gaps</h3>
+          <div class="sub-head">Division II Compliance Failures</div>
+          <ul class="bullet-list">
+            <li>Omission of Statement of Changes in Equity (SOCIE Parts A &amp; B).</li>
+            <li>Inadequate ICAI structured tables for Notes 1 to 14 disclosure.</li>
+            <li>Manual errors in Lease accounting (Ind AS 116), ECL, and Fair Value adjustments.</li>
+            <li>Cumbersome comparative restatements for prior financial years.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- SLIDE 3: TECHNOLOGY SOLUTION -->
+    <!-- ================================================================= -->
+    <div class="slide" id="slide-3">
+      <div class="slide-accent-line"></div>
+      
+      <div class="slide-header">
+        <span class="slide-category">Technology Solution</span>
+        <h2 class="slide-title">Architecture &amp; Core Engines of the Developed Assistant</h2>
+        <p class="slide-subtitle">A high-performance, browser-based decision support and financial conversion application</p>
+      </div>
+
+      <div class="grid-2x2">
+        <div class="solution-card">
+          <span class="pill-tag">Statutory Decision Support</span>
+          <h3>1. Rule 4 Applicability &amp; Roadmap Engine</h3>
+          <ul>
+            <li>Select Net Worth FY in descending order (F.Y. 2026-27 down to 2015).</li>
+            <li>Automatically calculates Reference Date, Transition Date &amp; First Reporting Year.</li>
+            <li>Produces authoritative ICAI &amp; MCA 4-phase transition milestone schedule.</li>
+          </ul>
+        </div>
+
+        <div class="solution-card">
+          <span class="pill-tag">Automated Accounting Engine</span>
+          <h3>2. Interactive TB &amp; Flagged Journal Entries</h3>
+          <ul>
+            <li>Upload Excel/CSV trial balance with instant validation and error checking.</li>
+            <li>Interactive in-grid account editing with real-time recalculation.</li>
+            <li>Analyzes accounts to generate statutory Journal Entries for Leases, ECL &amp; Tax.</li>
+          </ul>
+        </div>
+
+        <div class="solution-card">
+          <span class="pill-tag">Financial Statement Compiler</span>
+          <h3>3. Complete Division II Schedule III Financials</h3>
+          <ul>
+            <li>Generates Balance Sheet and Statement of Profit &amp; Loss with OCI.</li>
+            <li>Prepares Statement of Changes in Equity (SOCIE Parts A &amp; B).</li>
+            <li>Compiles Ind AS 7 Indirect Cash Flow and ICAI structured Notes 1 to 14.</li>
+          </ul>
+        </div>
+
+        <div class="solution-card">
+          <span class="pill-tag">100% Confidentiality Assured</span>
+          <h3>4. Client-Side Privacy &amp; 10-Sheet Excel Export</h3>
+          <ul>
+            <li>100% browser-based; zero client general ledger data is sent to external servers.</li>
+            <li>Generates a comprehensive 10-Sheet Excel (.xls) workbook in one click.</li>
+            <li>Provides an audit-ready reconciliation between Previous GAAP and Ind AS.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- SLIDE 4: IMPLEMENTATION PLAN -->
+    <!-- ================================================================= -->
+    <div class="slide" id="slide-4">
+      <div class="slide-accent-line"></div>
+      
+      <div class="slide-header">
+        <span class="slide-category">Implementation Plan</span>
+        <h2 class="slide-title">Step-by-Step Corporate Deployment &amp; Transition Roadmap</h2>
+        <p class="slide-subtitle">A phased operational methodology ensuring seamless compliance from assessment to final sign-off</p>
+      </div>
+
+      <div class="grid-4-phases">
+        <div class="phase-card">
+          <div class="phase-header">
+            <span>Phase 01</span>
+            <span>Week 1–2</span>
+          </div>
+          <div class="phase-body">
+            <h4 class="phase-title">Setup &amp; Applicability</h4>
+            <ul class="phase-bullets">
+              <li>Input entity profile, CIN &amp; corporate constitution.</li>
+              <li>Enter audited net worth under Section 2(57).</li>
+              <li>Engine confirms mandatory date of transition.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-header">
+            <span>Phase 02</span>
+            <span>Week 3–4</span>
+          </div>
+          <div class="phase-body">
+            <h4 class="phase-title">TB Upload &amp; Review</h4>
+            <ul class="phase-bullets">
+              <li>Upload Previous GAAP trial balance file.</li>
+              <li>Validate debit/credit balance in real time.</li>
+              <li>Perform in-line account grouping and nature checks.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-header">
+            <span>Phase 03</span>
+            <span>Week 5–6</span>
+          </div>
+          <div class="phase-body">
+            <h4 class="phase-title">Conversion &amp; JEs</h4>
+            <ul class="phase-bullets">
+              <li>Review flagged conversion journal entries.</li>
+              <li>Configure Ind AS 116 Leases &amp; ECL impairment.</li>
+              <li>Execute Ind AS 101 opening equity reconciliations.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-header">
+            <span>Phase 04</span>
+            <span>Week 7–8</span>
+          </div>
+          <div class="phase-body">
+            <h4 class="phase-title">Statements &amp; Export</h4>
+            <ul class="phase-bullets">
+              <li>Review Balance Sheet, P&amp;L, SOCIE &amp; Cash Flow.</li>
+              <li>Validate ICAI structured Notes 1 to 14.</li>
+              <li>Download final 10-Sheet Excel financial package.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- SLIDE 5: CONCLUSION & STRATEGIC VALUE -->
+    <!-- ================================================================= -->
+    <div class="slide" id="slide-5">
+      <div class="slide-accent-line"></div>
+      
+      <div class="slide-header">
+        <span class="slide-category">Conclusion &amp; Strategic Value</span>
+        <h2 class="slide-title">Transforming Statutory Financial Conversion for Indian Enterprises</h2>
+        <p class="slide-subtitle">Delivering precision, efficiency, and full statutory compliance for corporate finance teams</p>
+      </div>
+
+      <div class="conclusion-grid">
+        <div class="key-takeaway-box">
+          <div class="takeaway-item">
+            <h4>🛡️ Authoritative Statutory Compliance</h4>
+            <p>Accurately implements MCA Rule 4, Section 2(57), Ind AS 101, and Schedule III Division II without ambiguity.</p>
+          </div>
+
+          <div class="takeaway-item">
+            <h4>⚡ Drastic Reduction in Transition Timeline</h4>
+            <p>Replaces weeks of fragile manual spreadsheet mapping with instant, auto-reconciled financial statements.</p>
+          </div>
+
+          <div class="takeaway-item">
+            <h4>🔒 100% Client-Side Data Privacy</h4>
+            <p>Zero cloud or server transmission; sensitive corporate general ledger data remains strictly inside the user's browser.</p>
+          </div>
+
+          <div class="takeaway-item">
+            <h4>🔍 Transparent, Auditor-Ready Trail</h4>
+            <p>Complete traceability from Previous GAAP Trial Balance to converted Ind AS Balance Sheet, SOCIE, Cash Flows &amp; Notes.</p>
+          </div>
+        </div>
+
+        <div class="metrics-col">
+          <div class="metric-card">
+            <div class="metric-val">85%+</div>
+            <div class="metric-label">Time Saved in Conversion</div>
+            <div class="metric-sub">Instant TB restatement &amp; recalculations</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-val">100%</div>
+            <div class="metric-label">Client-Side Privacy</div>
+            <div class="metric-sub">Zero cloud database or server transmission</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-val">10-Sheet</div>
+            <div class="metric-label">Complete Excel Deliverable</div>
+            <div class="metric-sub">Division II Schedule III &amp; ICAI Notes 1–14</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Navigation Control Bar -->
+  <div class="controls">
+    <div>
+      <span>Use <strong>← / →</strong> arrow keys or buttons to navigate</span>
+    </div>
+
+    <div class="slide-indicator">
+      Slide <span id="current-slide">1</span> of <span id="total-slides">5</span>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="btn-nav" id="btn-prev" onclick="prevSlide()">← Previous</button>
+      <button class="btn-nav" id="btn-next" onclick="nextSlide()">Next →</button>
+      <button class="btn-nav" onclick="toggleFullScreen()">⛶ Fullscreen</button>
+    </div>
+  </div>
+
+  <script>
+    let currentSlideIndex = 1;
+    const totalSlides = 5;
+
+    function showSlide(index) {
+      if (index < 1) index = 1;
+      if (index > totalSlides) index = totalSlides;
+      currentSlideIndex = index;
+
+      document.querySelectorAll('.slide').forEach((slide, i) => {
+        slide.classList.toggle('active', i + 1 === currentSlideIndex);
+      });
+
+      document.getElementById('current-slide').textContent = currentSlideIndex;
+      document.getElementById('btn-prev').disabled = currentSlideIndex === 1;
+      document.getElementById('btn-next').disabled = currentSlideIndex === totalSlides;
+    }
+
+    function nextSlide() {
+      if (currentSlideIndex < totalSlides) {
+        showSlide(currentSlideIndex + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlideIndex > 1) {
+        showSlide(currentSlideIndex - 1);
+      }
+    }
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {});
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    // Keyboard Shortcuts (Arrow Left/Right, Space)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        prevSlide();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullScreen();
+      }
+    });
+
+    // Initialize
+    showSlide(1);
+  </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+Account Code,Account Description,Group,Debit,Credit,Nature,Existing AS Classification
+1010,Paid-up Equity Share Capital (Face Value Rs. 10),Shareholders Funds,0,5000,Equity,Share Capital
+1020,8% Cumulative Redeemable Preference Shares,Shareholders Funds,0,2000,Equity,Share Capital
+1030,Securities Premium Account,Reserves and Surplus,0,4500,Equity,Reserves and Surplus
+1040,General Reserve,Reserves and Surplus,0,8200,Equity,Reserves and Surplus
+1050,Surplus in Statement of Profit and Loss (Opening Balance),Reserves and Surplus,0,8053,Equity,Reserves and Surplus
+2010,Term Loan from HDFC Bank Ltd. (Secured),Non-Current Liabilities,0,8000,Liability,Long-Term Borrowings
+2020,Unamortised Upfront Loan Processing Fee (HDFC Loan),Non-Current Assets,45,0,Asset,Other Non-Current Assets
+2030,Deferred Tax Liability (Net) - Previous GAAP AS 22,Non-Current Liabilities,0,680,Liability,Deferred Tax Liabilities
+2040,Provision for Gratuity (Long-Term),Non-Current Liabilities,0,320,Liability,Long-Term Provisions
+2050,Provision for Decommissioning / Site Restoration,Non-Current Liabilities,0,0,Liability,Not Recognized under AS
+2110,Short-Term Working Capital Loan (SBI Cash Credit),Current Liabilities,0,2850,Liability,Short-Term Borrowings
+2120,Trade Payables - Dues to Micro and Small Enterprises (MSME),Current Liabilities,0,420,Liability,Trade Payables MSME
+2130,Trade Payables - Other Creditors for Goods & Services,Current Liabilities,0,3850,Liability,Trade Payables Others
+2140,Current Maturities of Long-Term Debt (HDFC Term Loan),Current Liabilities,0,1500,Liability,Other Current Liabilities
+2150,Statutory Dues Payable (GST TDS PF ESIC),Current Liabilities,0,215,Liability,Other Current Liabilities
+2160,Advance from Customers (Unearned Revenue),Current Liabilities,0,340,Liability,Other Current Liabilities
+2170,Provision for Product Warranties (Current),Current Liabilities,0,180,Liability,Short-Term Provisions
+3010,Freehold Factory Land,Non-Current Assets,5200,0,Asset,Tangible Fixed Assets
+3020,Factory Buildings (Net Carrying Amount),Non-Current Assets,8650,0,Asset,Tangible Fixed Assets
+3030,Plant Machinery and Heavy Equipment (Net),Non-Current Assets,19050,0,Asset,Tangible Fixed Assets
+3040,Capital Work-in-Progress (Paint Shop Automated Line),Non-Current Assets,850,0,Asset,CWIP
+3050,Computer Software & ERP License (Intangibles),Non-Current Assets,210,0,Asset,Intangible Assets
+3060,Commercial Office Building Rented Out to Third Party,Non-Current Assets,1200,0,Asset,Non-Current Investments
+3070,Investment in Equity Shares of Zenith Auto Components Pvt Ltd,Non-Current Assets,450,0,Asset,Non-Current Investments
+3080,Investment in Growth / Liquid Debt Mutual Funds,Current Assets,950,0,Asset,Current Investments
+3090,Security Deposit Paid for Leased Corporate Head Office,Non-Current Assets,100,0,Asset,Long-Term Loans and Advances
+4010,Raw Materials and Components Inventory,Current Assets,2840,0,Asset,Inventories
+4020,Work-in-Progress Inventory,Current Assets,1150,0,Asset,Inventories
+4030,Finished Goods Inventory (Precision Parts),Current Assets,1680,0,Asset,Inventories
+4040,Trade Receivables - Domestic Automotive OEMs,Current Assets,6850,0,Asset,Trade Receivables
+4050,Provision for Doubtful Debts (Previous GAAP Specific),Current Assets,0,65,Contra-Asset,Provision for Bad Debts
+4060,Cash in Hand,Current Assets,18,0,Asset,Cash and Cash Equivalents
+4070,Balances with Scheduled Banks in Current Accounts,Current Assets,520,0,Asset,Cash and Cash Equivalents
+4080,Bank Fixed Deposits (Maturity 3 to 12 months),Current Assets,650,0,Asset,Other Bank Balances
+4090,Prepaid Rent (Current Office Lease),Current Assets,36,0,Asset,Other Current Assets
+4100,GST Input Tax Credit Receivable & Advance Tax,Current Assets,386,0,Asset,Other Current Assets
+5010,Revenue from Sale of Manufactured Products,Revenue,0,38400,Revenue,Revenue from Operations
+5020,Other Operating Revenue (Scrap Sales & Incentives),Revenue,0,420,Revenue,Other Operating Revenue
+5030,Rental Income from Commercial Office Building,Revenue,0,120,Revenue,Other Income
+5040,Interest Income on Bank Deposits & Security Deposits,Revenue,0,58,Revenue,Other Income
+6010,Cost of Materials Consumed,Expenses,21850,0,Expense,Cost of Materials Consumed
+6020,Changes in Inventories of Finished Goods & WIP,Expenses,0,400,Expense,Changes in Inventories
+6030,Salaries Wages and Bonus,Expenses,4120,0,Expense,Employee Benefit Expense
+6040,Staff Gratuity and Actuarial Cost (AS 15),Expenses,82,0,Expense,Employee Benefit Expense
+6050,Interest on Term Loan & Working Capital Loan,Expenses,1045,0,Expense,Finance Costs
+6060,Operating Rent for Corporate Office Building,Expenses,144,0,Expense,Other Expenses
+6070,Depreciation on Property Plant and Equipment,Expenses,1320,0,Expense,Depreciation
+6080,Amortisation of Software Intangibles,Expenses,70,0,Expense,Amortisation
+6090,Power Fuel and Utilities,Expenses,2180,0,Expense,Other Expenses
+6100,Repairs & Maintenance to Plant & Buildings,Expenses,580,0,Expense,Other Expenses
+6110,Legal Professional & Secretarial Fees,Expenses,165,0,Expense,Other Expenses
+6120,Provision for Doubtful Debts Expense (AS Specific),Expenses,15,0,Expense,Other Expenses
+6130,Other Administrative & Selling Overhead Expenses,Expenses,1845,0,Expense,Other Expenses
+7010,Current Income Tax Expense,Tax Expenses,1250,0,Expense,Current Tax
+7020,Deferred Tax Expense (AS 22),Tax Expenses,70,0,Expense,Deferred Tax

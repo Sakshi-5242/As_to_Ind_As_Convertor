@@ -1,0 +1,288 @@
+Act as a **Chartered Accountant, Ind AS technical expert, financial-statement preparation specialist, MCA/Companies Act compliance expert, Excel automation specialist, UI/UX designer and senior HTML5/CSS3/JavaScript developer**. Develop a professional, working, browser-based application titled:
+
+**“AS to Ind AS Applicability & Financial Statement Conversion Assistant”**
+
+The application is intended for **company management, finance teams and accountants preparing financial statements**, not for auditing. It will be used for companies preparing financial statements for **FY 2026–27 onwards**.
+
+### 1. AUTHORITATIVE TECHNICAL FRAMEWORK
+
+Build the application strictly using the **latest Ind AS notified and applicable in India for FY 2026–27**, based primarily on:
+
+- MCA notifications under the Companies Act, 2013;
+- Companies (Indian Accounting Standards) Rules, 2015, as amended;
+- latest applicable MCA amendments/notifications;
+- ICAI Accounting Standards Board publications;
+- ICAI Ind AS Compendium;
+- ICAI Educational Material on Ind AS 101;
+- ICAI Ind AS Disclosure Checklist;
+- ICAI ITFG Clarifications and relevant technical guidance.
+
+Do **not hallucinate** accounting requirements. Do not treat IFRS, IAS, ICAI exposure drafts, articles, blogs or proposed standards as notified Ind AS. Clearly distinguish **law/notification**, **ICAI guidance**, and **illustrative professional guidance**.
+
+For FY 2026–27, incorporate only standards and amendments legally effective for that reporting period. Do not automatically incorporate proposed Ind AS 118 merely because an exposure draft exists.
+
+### 2. IND AS APPLICABILITY ENGINE
+
+Create an interactive questionnaire that determines whether the company is required to follow AS or Ind AS.
+
+Capture:
+
+- company type;
+- listed/unlisted status;
+- whether securities are proposed to be listed;
+- net worth;
+- net-worth history and relevant reference dates;
+- holding/subsidiary/associate/joint-venture relationships;
+- whether parent/group entities follow Ind AS;
+- nature of business;
+- NBFC status;
+- insurance/banking/other specifically regulated status;
+- comparative financial information;
+- voluntary adoption, where legally permitted.
+
+The engine must show:
+
+**“Ind AS Applicable / Ind AS Not Applicable / Further Information Required”**
+
+and clearly explain the rule/trigger supporting the conclusion.
+
+Provide an **Applicability Timeline** showing the first financial year of mandatory Ind AS adoption and the corresponding transition date.
+
+### 3. AS → IND AS TRANSITION ENGINE
+
+If Ind AS applicability is triggered, activate a **First-Time Adoption / Conversion Workspace** based on **Ind AS 101**.
+
+Explain:
+
+- date of transition;
+- opening Ind AS Balance Sheet;
+- comparative period requirements;
+- previous GAAP;
+- mandatory exceptions;
+- optional exemptions;
+- deemed-cost options;
+- reconciliation requirements.
+
+The system should create a structured **conversion checklist** rather than blindly converting figures.
+
+### 4. EXCEL TRIAL BALANCE UPLOAD
+
+Provide an accountant-friendly interface to upload an **Excel Trial Balance (.xlsx/.xls)**.
+
+Allow mapping of columns such as:
+
+- Account Code
+- Account Name
+- Group
+- Sub-group
+- Debit
+- Credit
+- Closing Balance
+- Previous Year Balance
+- Nature
+- Existing AS classification
+
+Provide automatic validation for:
+
+- debit/credit mismatch;
+- duplicate account codes;
+- blank account names;
+- invalid numbers;
+- inconsistent signs;
+- unclassified accounts.
+
+Allow manual mapping/editing before processing.
+
+### 5. ACCOUNTING ADJUSTMENT ENGINE
+
+Create a rule-based **AS-to-Ind AS Adjustment Matrix**.
+
+For each relevant account, identify possible:
+
+- recognition adjustments;
+- measurement adjustments;
+- fair-value adjustments;
+- impairment adjustments;
+- amortised-cost adjustments;
+- expected-credit-loss adjustments;
+- lease adjustments;
+- employee-benefit adjustments;
+- deferred-tax effects;
+- financial-instrument classification;
+- revenue recognition adjustments;
+- investment classification;
+- PPE/intangible remeasurement;
+- provisions/contingencies;
+- borrowing-cost adjustments;
+- foreign-exchange adjustments;
+- related-party classification;
+- consolidation adjustments;
+- presentation/reclassification adjustments.
+
+Do not make an accounting adjustment solely from the account name when additional facts are required. Instead display:
+
+**“Management Input Required”**
+
+with targeted questions.
+
+### 6. RECLASSIFICATION ENGINE
+
+Create a separate column showing:
+
+**Previous GAAP → Ind AS Classification → Reason → Relevant Ind AS → Financial Statement Impact**
+
+Examples may include:
+
+- current/non-current classification;
+- financial asset categories;
+- financial liabilities;
+- investment property;
+- PPE/intangibles;
+- lease assets/liabilities;
+- employee-benefit liabilities;
+- provisions;
+- equity versus liability classification.
+
+### 7. DUAL OUTPUT
+
+Maintain two distinct outputs:
+
+**A. Accounting Conversion Output**
+
+| Account | Previous GAAP | Adjustment | Ind AS | Final Ind AS Balance | Reason |
+
+**B. Financial Statement Reclassification Output**
+
+Show how the converted trial balance flows into:
+
+- Balance Sheet;
+- Statement of Profit and Loss;
+- Cash Flow Statement;
+- Statement of Changes in Equity;
+- Notes to Accounts.
+
+Ensure every adjustment is traceable to the original trial-balance account.
+
+### 8. DISCLOSURE CHECKER
+
+Build an **Ind AS Disclosure Checklist** linked to the converted trial balance and questionnaire.
+
+Identify applicable disclosures under relevant Ind AS, including where relevant:
+
+- significant accounting policies;
+- estimates and judgements;
+- PPE/intangibles;
+- leases;
+- financial instruments;
+- ECL;
+- related parties;
+- revenue;
+- employee benefits;
+- deferred tax;
+- provisions;
+- fair value;
+- EPS;
+- segment reporting;
+- earnings and other applicable disclosures;
+- Ind AS 101 transition disclosures.
+
+The checklist should have:
+
+**Disclosure | Applicable? | Information Required | Status | Responsible Person | Remarks | Relevant Ind AS**
+
+Do not generate a disclosure merely because an account exists; use applicability logic and management inputs.
+
+### 9. IND AS 101 RECONCILIATION
+
+Automatically prepare an editable reconciliation structure for:
+
+- equity under previous GAAP to Ind AS at transition date;
+- equity at end of comparative period;
+- total comprehensive income/profit reconciliation;
+- material adjustment explanations;
+- tax effects;
+- classification/reclassification effects.
+
+Clearly label system-generated amounts as **“Draft – Management/Accountant Review Required.”**
+
+### 10. DYNAMIC CALCULATION
+
+Whenever the accountant changes an input figure, the application must automatically recalculate:
+
+- adjustment;
+- Ind AS closing balance;
+- reclassification;
+- tax impact where applicable;
+- equity impact;
+- profit impact;
+- disclosure checklist status;
+- financial-statement mapping.
+
+Maintain a complete **audit-style calculation trail**, but make clear that the application is an accounting preparation tool and not an audit tool.
+
+### 11. EXCEL EXPORT
+
+Provide downloadable Excel workbooks containing separate sheets:
+
+1. Company Information
+2. Ind AS Applicability
+3. Applicability Timeline
+4. Original Trial Balance
+5. Account Mapping
+6. Conversion Adjustments
+7. Reclassification
+8. Ind AS Adjusted Trial Balance
+9. Ind AS 101 Reconciliation
+10. Financial Statement Mapping
+11. Disclosure Checklist
+12. Management Inputs
+13. Assumptions & Review Points
+14. Source/Technical References
+
+Use formulas wherever practical so that changing source figures updates downstream calculations.
+
+### 12. USER INTERFACE
+
+Create a clean professional interface suitable for an accountant with limited technical knowledge.
+
+Use a dashboard with:
+
+**Company Setup → Applicability → Upload TB → Mapping → Conversion → Reclassification → Disclosures → Financial Statements → Export**
+
+Use colour-coded status indicators:
+
+- Green = Complete
+- Amber = Management Input Required
+- Red = Error/Attention Required
+- Blue = Informational
+
+Provide tooltips explaining technical terminology in simple accounting language.
+
+### 13. SAFETY AND PROFESSIONAL CONTROLS
+
+Never silently modify accounting data.
+
+Every automated adjustment must show:
+
+**Source Account → Rule → Calculation → Adjustment → Result → Ind AS Reference → Review Status**
+
+Include a prominent disclaimer:
+
+**“This application is an accounting preparation and decision-support tool. Automated results require review by qualified finance/accounting personnel and do not constitute statutory audit or legal advice.”**
+
+### 14. TECHNICAL REQUIREMENTS
+
+Build using:
+
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- ExcelJS or another reliable browser-compatible Excel library
+- Chart/dashboard components only where useful
+- Local browser processing wherever possible.
+
+The application should work without a backend for the demonstration version. Use modular JavaScript objects/JSON rules so that future MCA/ICAI updates can be incorporated without rewriting the entire application.
+
+Provide sample company data and a sample trial balance so the project can be demonstrated immediately.
+
+Finally, provide the **complete working HTML/CSS/JavaScript code**, sample Excel structure, rule architecture, calculation logic, validation logic and clear instructions for running the application locally.

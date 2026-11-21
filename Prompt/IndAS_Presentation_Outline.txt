@@ -1,0 +1,35 @@
+AS to Ind AS Applicability & Financial Statement Conversion Assistant
+	Statutory Decision Support & Financial Restatement Engine under MCA Companies (Ind AS) Rules, 2015 & Ind AS 101
+	Candidate Name 1 | WRO 0689421 - Ind AS Technical & MCA Compliance
+	Candidate Name 2 | WRO 0712394 - Financial Statement Architecture & Notes
+	Candidate Name 3 | WRO 0698154 - Accounting Adjustment Engine & JEs
+	Candidate Name 4 | WRO 0705632 - Excel Automation & Full-Stack UI/UX
+
+THE PROBLEM STATEMENT: Critical Pain Points in AS-to-Ind AS Transition
+	Complex Statutory Rules: Non-linear MCA Rule 4 thresholds (Rs. 250 Cr, listed status, NBFCs)
+	Reference Date Ambiguity: Confusion connecting reference audit year to the date of transition
+	Group Cascade Triggers: Holding, subsidiary, associate & JV triggers frequently missed
+	Fragile Spreadsheets: Broken Excel formulas during trial balance mapping and restatements
+	Missing Traceability: Lack of dual audit trail between Previous GAAP and Ind AS balances
+	Schedule III Gaps: Missing Statement of Changes in Equity (SOCIE) & ICAI structured Notes 1-14
+
+TECHNOLOGY SOLUTION: Architecture of the Developed Assistant
+	1. Rule 4 Applicability Engine: Select Net Worth FY in descending order (F.Y. 2026-27 to 2015)
+	Dynamic Transition Roadmap: Calculates Opening Balance Sheet date, Comparative FY & First Reporting Year
+	2. Interactive Trial Balance: In-grid live editable accounts with real-time recalculation
+	Automated Journal Entries: Analyzes accounts to flag statutory entries for Leases (Ind AS 116), ECL & Tax
+	3. Schedule III Financials: Division II Balance Sheet, P&L with OCI, SOCIE & ICAI Notes 1 to 14
+	4. Client-Side Privacy: 100% browser-based with zero cloud transmission & 10-Sheet Excel export
+
+IMPLEMENTATION PLAN: Corporate Deployment & Transition Roadmap
+	Phase 1 (Week 1-2): Setup & Applicability - Input entity profile, CIN & audited net worth
+	Phase 2 (Week 3-4): TB Upload & Review - Upload Previous GAAP trial balance with instant balancing
+	Phase 3 (Week 5-6): Conversion & JEs - Review flagged journal entries & Ind AS 101 equity reconciliations
+	Phase 4 (Week 7-8): FS Compilation & Export - Review Balance Sheet, P&L, SOCIE, Notes & download 10-Sheet Excel
+
+CONCLUSION & STRATEGIC VALUE: Transforming Financial Conversion
+	100% Authoritative Legal Alignment: Full adherence to MCA Rule 4, Section 2(57) & Ind AS 101
+	85%+ Time Savings in Conversion: Replaces weeks of manual spreadsheet mapping with instant compilation
+	100% Client-Side Privacy: Sensitive corporate general ledger data remains in the user's browser
+	Auditor-Ready Transparent Trail: Complete traceability from Previous GAAP to Ind AS statements
+	10-Sheet Complete Excel Deliverable: Professional Schedule III financial workbook in one click

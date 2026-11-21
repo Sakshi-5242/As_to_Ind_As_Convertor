@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AS to Ind AS Applicability &amp; Financial Statement Conversion Assistant</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- SheetJS for local Excel parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+
+  <!-- Statutory Disclaimer Notice -->
+  <aside class="disclaimer-banner" role="alert">
+    <strong>STATUTORY NOTICE:</strong> This application is an accounting preparation and decision-support tool. Automated results require review by qualified finance personnel and do not constitute statutory audit or legal advice. 
+  </aside>
+
+  <!-- Clean Executive Header -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand-wrapper">
+        <div class="brand-logo">₹</div>
+        <div class="brand-info">
+          <h1>AS to Ind AS Applicability &amp; Financial Statement Conversion Assistant</h1>
+          <div class="subtitle">Statutory Transition Platform • Companies (Ind AS) Rules, 2015 • Schedule III (Division II) • ICAI Guidance Framework</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="btn-header-export" class="btn btn-success btn-sm" title="Download Ind AS Financial Statements Workbook" style="display: none;">
+          📥 Download Ind AS Financials (.xls)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Logical 6-Step Stepper Progress Bar -->
+  <nav class="stepper-nav" aria-label="Conversion Workflow Steps">
+    <div class="stepper-inner">
+      <button class="step-item active" data-step="1" id="step-btn-1">
+        <span class="step-number">1</span>
+        <span>1. Company Details</span>
+      </button>
+      <div class="step-divider"></div>
+
+      <button class="step-item" data-step="2" id="step-btn-2">
+        <span class="step-number">2</span>
+        <span>2. Check Applicability</span>
+      </button>
+      <div class="step-divider"></div>
+
+      <button class="step-item locked" data-step="3" id="step-btn-3">
+        <span class="step-number">3</span>
+        <span>3. Upload Trial Balance 🔒</span>
+      </button>
+      <div class="step-divider"></div>
+
+      <button class="step-item locked" data-step="4" id="step-btn-4">
+        <span class="step-number">4</span>
+        <span>4. Flagged Adjustments 🔒</span>
+      </button>
+      <div class="step-divider"></div>
+
+      <button class="step-item locked" data-step="5" id="step-btn-5">
+        <span class="step-number">5</span>
+        <span>5. Financial Statements &amp; Notes 🔒</span>
+      </button>
+      <div class="step-divider"></div>
+
+      <button class="step-item locked" data-step="6" id="step-btn-6">
+        <span class="step-number">6</span>
+        <span>6. Export &amp; Disclosures 🔒</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="page-container">
+
+    <!-- ================================================================= -->
+    <!-- STEP 1: COMPANY SETUP & FINANCIAL YEAR SELECTOR -->
+    <!-- ================================================================= -->
+    <section id="wizard-step-1" class="wizard-step active">
+      <div class="step-header">
+        <span class="badge-step">Step 1 of 6</span>
+        <h2>Enter Your Company Details &amp; Select Financial Year</h2>
+        <p>Provide your entity's basic profile, net worth, and select the reporting financial year to evaluate statutory Ind AS applicability.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title-bar">
+          <h3>🏢 Entity Profile &amp; Reporting Period</h3>
+          <span class="badge badge-neutral">Ready for Input</span>
+        </div>
+
+        <form id="form-step-1">
+          <!-- Financial Year Selector (Year for which Net Worth is Entered) -->
+          <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: var(--radius-md); padding: 16px; margin-bottom: 20px;">
+            <div class="form-group">
+              <label style="font-size: 13px; color: #1e3a8a; font-weight: 700;">
+                📅 Select Financial Year for which Audited Net Worth is Entered Manually <span style="color:red">*</span>
+              </label>
+              <select class="form-control" id="inp-financial-year" style="font-weight: 600; font-size: 14px; border-color: #3b82f6;">
+                <option value="2026-2027" selected>F.Y. 2026-27</option>
+                <option value="2025-2026">F.Y. 2025-26</option>
+                <option value="2024-2025">F.Y. 2024-25</option>
+                <option value="2023-2024">F.Y. 2023-24</option>
+                <option value="2022-2023">F.Y. 2022-23</option>
+                <option value="2021-2022">F.Y. 2021-22</option>
+                <option value="2020-2021">F.Y. 2020-21</option>
+                <option value="2019-2020">F.Y. 2019-20</option>
+                <option value="2018-2019">F.Y. 2018-19</option>
+                <option value="2017-2018">F.Y. 2017-18</option>
+                <option value="2016-2017">F.Y. 2016-17</option>
+                <option value="2015-2016">F.Y. 2015-16</option>
+              </select>
+              <span class="form-hint" style="color: #1e40af;">
+                Select the financial year for which the company's audited net worth is entered manually below.
+              </span>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Company Legal Name <span style="color:red">*</span></label>
+              <input type="text" class="form-control" id="inp-company-name" value="" placeholder="Enter Company Name (e.g. Apex Precision Engineering Ltd.)">
+              <span class="form-hint">Official entity name as registered with MCA.</span>
+            </div>
+
+            <div class="form-group">
+              <label>Corporate Identity Number (CIN)</label>
+              <input type="text" class="form-control font-mono" id="inp-cin" value="" placeholder="e.g. U29299MH2012PLC238910">
+              <span class="form-hint">21-digit alphanumeric CIN from MCA Master Data.</span>
+            </div>
+          </div>
+
+          <div class="form-grid-3" style="margin-top: 18px;">
+            <div class="form-group">
+              <label>Constitution / Entity Type <span style="color:red">*</span></label>
+              <select class="form-control" id="inp-company-type">
+                <option value="unlisted_public" selected>Unlisted Public Limited Company</option>
+                <option value="private_ltd">Private Limited Company</option>
+                <option value="listed_equity">Listed on BSE / NSE (Equity)</option>
+                <option value="listed_debt">Listed Debt Securities</option>
+                <option value="sme">Listed on SME Exchange (BSE SME / NSE Emerge)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Securities Proposed to be Listed</label>
+              <select class="form-control" id="inp-proposed-listing">
+                <option value="no" selected>No (Not in process of listing)</option>
+                <option value="yes">Yes (Draft Prospectus filed with SEBI/BSE/NSE)</option>
+              </select>
+              <span class="form-hint">Rule 4(1)(iii)(a) treats in-process companies as listed.</span>
+            </div>
+
+            <div class="form-group">
+              <label>Nature of Business / Regulatory Status</label>
+              <select class="form-control" id="inp-nature-business">
+                <option value="manufacturing" selected>Commercial / Manufacturing / Services</option>
+                <option value="nbfc">NBFC (Regulated by RBI)</option>
+                <option value="banking">Banking Company (RBI Governed)</option>
+                <option value="insurance">Insurance Entity (IRDAI Governed)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-grid-2" style="margin-top: 18px;">
+            <div class="form-group">
+              <label id="lbl-net-worth">Audited Net Worth as on year end. (₹ in Crores) <span style="color:red">*</span></label>
+              <input type="number" step="0.01" class="form-control" id="inp-net-worth" value="" placeholder="e.g. 320.15">
+              <span class="form-hint"><strong>Section 2(57) Net Worth:</strong> Paid-up Capital + Free Reserves + Securities Premium minus Losses &amp; Revaluation Reserve.</span>
+            </div>
+
+            <div class="form-group">
+              <label>Group Entity Relationship (Holding / Sub / Associate)</label>
+              <select class="form-control" id="inp-group-status">
+                <option value="none" selected>Standalone (No parent or subsidiary under Ind AS)</option>
+                <option value="sub_of_indas">Subsidiary of an Ind AS Entity</option>
+                <option value="parent_of_indas">Holding Company of an Ind AS Entity</option>
+                <option value="jv_associate">Joint Venture or Associate of an Ind AS Entity</option>
+              </select>
+              <span class="form-hint">Rule 4(1)(iii)(c) mandates Ind AS if any parent or subsidiary is covered.</span>
+            </div>
+          </div>
+        </form>
+
+       
+                  </div>
+      </div>
+
+      <div class="wizard-footer">
+        <div></div>
+        <button type="button" id="btn-goto-step-2" class="btn btn-primary btn-lg">
+          Check Ind AS Applicability →
+        </button>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- STEP 2: APPLICABILITY VERDICT & ROADMAP -->
+    <!-- ================================================================= -->
+    <section id="wizard-step-2" class="wizard-step">
+      <div class="step-header">
+        <span class="badge-step">Step 2 of 6</span>
+        <h2 id="step2-heading">Statutory Applicability Verdict &amp; Ind AS Transition Roadmap</h2>
+        <p id="step2-subheading">Evaluation conducted under Rule 4 of Companies (Indian Accounting Standards) Rules, 2015 based on the audited net worth of the selected financial year.</p>
+      </div>
+
+      <!-- Verdict Banner -->
+      <div id="verdict-banner" class="verdict-card applicable">
+        <div class="verdict-header">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 28px;" id="verdict-icon">✅</span>
+            <div>
+              <h3 style="font-size: 18px; margin: 0;" id="verdict-title">Ind AS Applicability Status</h3>
+              <p style="font-size: 13px; margin-top: 2px;" id="verdict-subtitle"></p>
+            </div>
+          </div>
+          <span class="verdict-badge applicable" id="verdict-badge">-</span>
+        </div>
+        <div id="verdict-details" style="font-size: 12.5px; line-height: 1.6; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 10px;"></div>
+      </div>
+
+      <!-- Timeline & Roadmap Card -->
+      <div class="card" id="card-timeline-view">
+        <div class="card-title-bar">
+          <h3>📅 Statutory Transition Timeline (MCA Rule 4 &amp; ICAI Guidance Note Framework)</h3>
+          <span class="badge badge-primary" id="badge-selected-fy">Net Worth Basis</span>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-label">Date of Transition (Opening BS)</div>
+            <div class="kpi-value font-mono" id="timeline-transition-date" style="color: var(--primary);">1 April 2025</div>
+            <div class="kpi-sub">Opening Ind AS Balance Sheet prepared</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Comparative Financial Year</div>
+            <div class="kpi-value font-mono" id="timeline-comparative-year">FY 2025–26</div>
+            <div class="kpi-sub">Restated to Ind AS for comparison</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">First Reporting Financial Year</div>
+            <div class="kpi-value font-mono" id="timeline-reporting-year" style="color: var(--success);">FY 2026–27</div>
+            <div class="kpi-sub">Complete statutory Ind AS statements</div>
+          </div>
+        </div>
+
+        <!-- ICAI & MCA Guidance Framework Milestones Table -->
+        <div id="timeline-milestones-container" style="margin-top: 18px;"></div>
+
+        <div style="font-size: 12.5px; color: var(--text-muted); background: #f8fafc; padding: 14px; border-radius: var(--radius-sm); border-left: 3px solid var(--primary);">
+          <strong>Statutory Principle:</strong> In accordance with Ind AS 101 paragraph 11, all cumulative differences between Previous GAAP (AS) and Ind AS at the <strong>Date of Transition</strong> are recognized directly in <strong>Opening Retained Earnings</strong> (or other equity).
+        </div>
+      </div>
+
+      <div class="wizard-footer">
+        <button type="button" class="btn btn-secondary btn-back" data-goto="1">
+          ← Back to Company Details
+        </button>
+        <button type="button" id="btn-goto-step-3" class="btn btn-success btn-lg">
+          Ind AS is Applicable! Proceed to Step 3: Upload Trial Balance →
+        </button>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- STEP 3: UPLOAD & EDIT TRIAL BALANCE -->
+    <!-- ================================================================= -->
+    <section id="wizard-step-3" class="wizard-step">
+      <div class="step-header">
+        <span class="badge-step">Step 3 of 6</span>
+        <h2>Upload &amp; Verify Your Previous GAAP (AS) Trial Balance</h2>
+        <p>Upload your company's Trial Balance file (.xlsx, .xls, or .csv). Any edits made directly to the Trial Balance accounts will dynamically update all adjustments, journal entries, and financial statements!</p>
+      </div>
+
+      <div class="card">
+        <!-- Dropzone -->
+        <div class="upload-box" id="step3-dropzone">
+          <div class="upload-icon">📂</div>
+          <h3 style="font-size: 17px; margin-bottom: 6px;">Drag and Drop your Trial Balance (.xlsx / .xls / .csv)</h3>
+          <p style="font-size: 12.5px; color: var(--text-muted); margin-bottom: 14px;">
+            Columns: Account Code, Account Description, Group, Debit, Credit, Nature
+          </p>
+          <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+            <button type="button" class="btn btn-primary" onclick="document.getElementById('file-upload-input').click()">
+              Choose File from Computer
+            </button>
+            <button type="button" id="btn-download-template" class="btn btn-outline-primary">
+              📥 Download Sample Template (.csv)
+            </button>
+          </div>
+          <input type="file" id="file-upload-input" accept=".xlsx, .xls, .csv" style="display: none;">
+        </div>
+
+        </div>
+
+        <!-- TB Validation Summary & Interactive Editor -->
+        <div id="tb-summary-container" style="margin-top: 24px; display: none;">
+          <div class="card-title-bar">
+            <h3>Interactive Trial Balance (Directly Editable)</h3>
+            <span id="tb-badge-status" class="badge badge-success">Balanced ✓</span>
+          </div>
+
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+            💡 <strong>Dynamic Linkage:</strong> You can edit any Debit or Credit amount directly in the table below. The adjustments, flagged journal entries, and financial statements will automatically recalculate in real time!
+          </p>
+
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-label">Total Debits</div>
+              <div class="kpi-value font-mono" id="disp-tb-total-dr">₹0.00 L</div>
+              <div class="kpi-sub">Assets &amp; Expenses</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Total Credits</div>
+              <div class="kpi-value font-mono" id="disp-tb-total-cr">₹0.00 L</div>
+              <div class="kpi-sub">Equity, Liabilities &amp; Revenue</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Accounts Loaded</div>
+              <div class="kpi-value font-mono" id="disp-tb-count">0 Accounts</div>
+              <div class="kpi-sub">Dynamic Recalculation Active</div>
+            </div>
+          </div>
+
+          <!-- Interactive Editable TB Table -->
+          <div class="table-wrapper" style="max-height: 440px;">
+            <table class="app-table">
+              <thead style="position: sticky; top: 0; z-index: 5;">
+                <tr>
+                  <th style="width: 80px;">Code</th>
+                  <th>Account Description</th>
+                  <th style="width: 170px;">Classification</th>
+                  <th style="width: 140px;" class="text-right">Debit (₹ L) [Edit]</th>
+                  <th style="width: 140px;" class="text-right">Credit (₹ L) [Edit]</th>
+                </tr>
+              </thead>
+              <tbody id="step3-tb-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="wizard-footer">
+        <button type="button" class="btn btn-secondary btn-back" data-goto="2">
+          ← Back to Applicability
+        </button>
+        <button type="button" id="btn-goto-step-4" class="btn btn-primary btn-lg" style="display: none;">
+          Analyze TB &amp; Generate Flagged Adjustments (Step 4) →
+        </button>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- STEP 4: FLAGGED JOURNAL ENTRIES ANALYZING TRIAL BALANCE -->
+    <!-- ================================================================= -->
+    <section id="wizard-step-4" class="wizard-step">
+      <div class="step-header">
+        <span class="badge-step">Step 4 of 6</span>
+        <h2>Statutory Flagged Adjustments &amp; Journal Entries</h2>
+        <p>The adjustment engine has analyzed your uploaded Trial Balance accounts and generated flagged conversion vouchers tailored to your specific figures.</p>
+      </div>
+
+      <!-- Tax Rate Bar -->
+      <div style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px 20px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+        <div style="font-size: 13px;">
+          <strong>Applicable Corporate Tax Rate:</strong> 
+          <span style="color: var(--text-muted);">Section 115BAA Regime (22% + 10% surcharge + 4% cess)</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 12px; font-weight: 600;">Tax Rate:</span>
+          <input type="number" id="inp-tax-rate" step="0.01" value="25.17" style="width: 80px; padding: 4px 8px; border: 1px solid var(--border); border-radius: 4px; font-weight: 700;">
+          <span style="font-size: 12px;">%</span>
+        </div>
+      </div>
+
+      <!-- Flagged Vouchers Table Card -->
+      <div class="card">
+        <div class="card-title-bar">
+          <h3>📑 Flagged Conversion Journal Vouchers (Audit Ready)</h3>
+          <span class="badge badge-warning" id="badge-flagged-count">Vouchers Generated</span>
+        </div>
+        <div class="table-wrapper" style="max-height: 520px;">
+          <table class="app-table">
+            <thead style="position: sticky; top: 0; z-index: 5;">
+              <tr>
+                <th style="width: 90px;">Voucher</th>
+                <th style="width: 95px;">Standard</th>
+                <th style="width: 220px;">Statutory Flag</th>
+                <th>Debit / Credit Account Title &amp; Narration</th>
+                <th style="width: 120px;" class="text-right">Debit (₹ L)</th>
+                <th style="width: 120px;" class="text-right">Credit (₹ L)</th>
+                <th style="width: 100px;" class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody id="flagged-jv-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="wizard-footer">
+        <button type="button" class="btn btn-secondary btn-back" data-goto="3">
+          ← Back to Trial Balance
+        </button>
+        <button type="button" id="btn-goto-step-5" class="btn btn-primary btn-lg">
+          Proceed to Financial Statements &amp; Structured Notes (Step 5) →
+        </button>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- STEP 5: FINANCIAL STATEMENTS & STRUCTURED NOTES (ICAI FRAMEWORK) -->
+    <!-- ================================================================= -->
+    <section id="wizard-step-5" class="wizard-step">
+      <div class="step-header">
+        <span class="badge-step">Step 5 of 6</span>
+        <h2>Schedule III Financial Statements &amp; Structured Notes to Accounts</h2>
+        <p>Complete financial statements with structured disclosure tables as prescribed by ICAI Guidance Notes and Division II of Schedule III.</p>
+      </div>
+
+      <div class="card">
+        <!-- Sub-tabs -->
+        <div class="subtabs-bar">
+          <button class="subtab-btn active" data-subtab="subtab-bs">1. Balance Sheet</button>
+          <button class="subtab-btn" data-subtab="subtab-pnl">2. Statement of P&amp;L (with OCI)</button>
+          <button class="subtab-btn" data-subtab="subtab-socie">3. SOCIE</button>
+          <button class="subtab-btn" data-subtab="subtab-cashflow">4. Cash Flow Statement</button>
+          <button class="subtab-btn" data-subtab="subtab-notes">5. Notes to Accounts (Structured ICAI Tables)</button>
+          <button class="subtab-btn" data-subtab="subtab-recon">6. Ind AS 101 Reconciliations</button>
+          <button class="subtab-btn" data-subtab="subtab-convtb">7. Converted 6-Col TB</button>
+        </div>
+
+        <!-- Subtab 1: Balance Sheet (Division II Schedule III to the Companies Act, 2013) -->
+        <div id="subtab-bs" class="subtab-pane active">
+          <!-- Balance Sheet Matching Live Status Card -->
+          <div id="bs-match-banner" style="background: linear-gradient(135deg, #064e3b 0%, #065f46 100%); color: #ecfdf5; border-radius: 8px; padding: 14px 18px; margin-bottom: 18px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="background: #10b981; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold;">✔</div>
+              <div>
+                <div style="font-weight: 700; font-size: 14px; letter-spacing: 0.3px; color: #a7f3d0;" id="bs-match-status-title">BALANCE SHEET STATUS: 100% MATCHED & RECONCILED</div>
+                <div style="font-size: 12.5px; opacity: 0.95; margin-top: 2px;">
+                  Total Assets: <strong id="banner-total-assets" style="color: #ffffff;">₹0.00 L</strong> &nbsp;|&nbsp; 
+                  Total Equity &amp; Liabilities: <strong id="banner-total-eq-liab" style="color: #ffffff;">₹0.00 L</strong> &nbsp;|&nbsp; 
+                  Net Difference: <strong id="banner-diff-amount" style="color: #6ee7b7; font-family: monospace;">₹0.00 (Balanced)</strong>
+                </div>
+              </div>
+            </div>
+            <span class="badge" style="background: #047857; color: #d1fae5; border: 1px solid #10b981; font-size: 12px; padding: 6px 12px; font-weight: 600;">Division II Schedule III Compliant</span>
+          </div>
+
+          <div style="margin-bottom: 12px; display: flex; justify-content: space-between; align-items: flex-end;">
+            <div>
+              <h3 style="margin: 0; font-size: 16px; color: #0f172a; font-weight: 700;">Statement of Balance Sheet</h3>
+              <p style="margin: 3px 0 0; font-size: 12px; color: #64748b;">Prepared under Division II of Schedule III to the Companies Act, 2013 and Ind AS 1 (₹ in Lakhs)</p>
+            </div>
+            <div style="font-size: 11.5px; color: #475569; background: #f1f5f9; padding: 4px 10px; border-radius: 4px; border: 1px solid #cbd5e1;">
+              Reporting Currency: <strong>INR (₹ in Lakhs)</strong>
+            </div>
+          </div>
+
+          <div class="table-wrapper" style="box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; border-radius: 8px;">
+            <table class="app-table" style="margin-bottom: 0;">
+              <thead>
+                <tr style="background: #0f172a; color: #ffffff;">
+                  <th style="color: #f8fafc; font-size: 12.5px; padding: 10px 14px;">Particulars</th>
+                  <th style="width: 90px; text-align: center; color: #94a3b8; font-size: 12px;">Note No.</th>
+                  <th class="text-right" style="width: 170px; color: #f8fafc; font-size: 12.5px; padding: 10px 14px;" id="col-header-indas-bs">As at 31 Mar 2026<br><span style="font-size: 10px; font-weight: normal; color: #93c5fd;">(Ind AS)</span></th>
+                  <th class="text-right" style="width: 170px; color: #cbd5e1; font-size: 12.5px; padding: 10px 14px;" id="col-header-as-bs">As at 31 Mar 2025<br><span style="font-size: 10px; font-weight: normal; color: #cbd5e1;">(Previous GAAP / AS)</span></th>
+                  <th class="text-right" style="width: 140px; color: #a5f3fc; font-size: 12.5px; padding: 10px 14px;">Variation<br><span style="font-size: 10px; font-weight: normal; color: #a5f3fc;">(Ind AS Impact)</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- I. ASSETS -->
+                <tr style="background: #e2e8f0; font-weight: 800; color: #0f172a;">
+                  <td colspan="5" style="letter-spacing: 0.5px; font-size: 13px;">I. ASSETS</td>
+                </tr>
+                <tr style="background: #f8fafc; font-weight: 700; color: #1e3a8a;">
+                  <td colspan="5">(1) Non-current assets</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(a) Property, Plant and Equipment</td>
+                  <td class="text-center"><a href="#note-3" class="note-link">Note 3</a></td>
+                  <td class="text-right font-mono" id="bs-ppe-ind">-</td>
+                  <td class="text-right font-mono" id="bs-ppe-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-ppe-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(b) Capital work-in-progress</td>
+                  <td class="text-center"><a href="#note-3" class="note-link">Note 3</a></td>
+                  <td class="text-right font-mono" id="bs-cwip-ind">-</td>
+                  <td class="text-right font-mono" id="bs-cwip-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-cwip-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(c) Investment Property</td>
+                  <td class="text-center"><a href="#note-5" class="note-link">Note 5</a></td>
+                  <td class="text-right font-mono" id="bs-invprop-ind">-</td>
+                  <td class="text-right font-mono" id="bs-invprop-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-invprop-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(d) Right-of-use assets (Ind AS 116)</td>
+                  <td class="text-center"><a href="#note-4" class="note-link">Note 4</a></td>
+                  <td class="text-right font-mono" id="bs-rou-ind">-</td>
+                  <td class="text-right font-mono" id="bs-rou-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-rou-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(e) Other Intangible assets</td>
+                  <td class="text-center"><a href="#note-3" class="note-link">Note 3</a></td>
+                  <td class="text-right font-mono" id="bs-intangible-ind">-</td>
+                  <td class="text-right font-mono" id="bs-intangible-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-intangible-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(f) Financial Assets</td>
+                  <td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 40px;">(i) Non-current Investments</td>
+                  <td class="text-center"><a href="#note-6" class="note-link">Note 6</a></td>
+                  <td class="text-right font-mono" id="bs-ncinv-ind">-</td>
+                  <td class="text-right font-mono" id="bs-ncinv-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-ncinv-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 40px;">(ii) Other non-current financial assets (Security Deposits at PV)</td>
+                  <td class="text-center"><a href="#note-6" class="note-link">Note 6</a></td>
+                  <td class="text-right font-mono" id="bs-ncothfin-ind">-</td>
+                  <td class="text-right font-mono" id="bs-ncothfin-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-ncothfin-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(g) Deferred tax assets (net)</td>
+                  <td class="text-center"><a href="#note-11" class="note-link">Note 11</a></td>
+                  <td class="text-right font-mono" id="bs-dta-ind">-</td>
+                  <td class="text-right font-mono" id="bs-dta-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-dta-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(h) Other non-current assets (Prepaid Lease Rent / Loan Fees)</td>
+                  <td class="text-center">-</td>
+                  <td class="text-right font-mono" id="bs-othncassets-ind">-</td>
+                  <td class="text-right font-mono" id="bs-othncassets-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-othncassets-var">-</td>
+                </tr>
+                <tr class="subtotal-row" style="background: #f1f5f9; font-weight: 700; border-top: 1px solid #cbd5e1;">
+                  <td style="padding-left: 24px;">Sub-total: Non-current assets</td>
+                  <td></td>
+                  <td class="text-right font-mono" id="step5-bs-nc-assets">-</td>
+                  <td class="text-right font-mono" id="step5-bs-nc-assets-as">-</td>
+                  <td class="text-right font-mono" id="step5-bs-nc-assets-var">-</td>
+                </tr>
+
+                <tr style="background: #f8fafc; font-weight: 700; color: #1e3a8a;">
+                  <td colspan="5">(2) Current assets</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(a) Inventories</td>
+                  <td class="text-center">-</td>
+                  <td class="text-right font-mono" id="bs-inv-ind">-</td>
+                  <td class="text-right font-mono" id="bs-inv-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-inv-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(b) Financial Assets</td>
+                  <td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 40px;">(i) Current Investments (Mutual Funds at FVTPL)</td>
+                  <td class="text-center"><a href="#note-6" class="note-link">Note 6</a></td>
+                  <td class="text-right font-mono" id="bs-currinv-ind">-</td>
+                  <td class="text-right font-mono" id="bs-currinv-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-currinv-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 40px;">(ii) Trade receivables (Net of ECL)</td>
+                  <td class="text-center"><a href="#note-7" class="note-link">Note 7</a></td>
+                  <td class="text-right font-mono" id="bs-tr-ind">-</td>
+                  <td class="text-right font-mono" id="bs-tr-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-tr-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 40px;">(iii) Cash and cash equivalents</td>
+                  <td class="text-center">-</td>
+                  <td class="text-right font-mono" id="bs-cce-ind">-</td>
+                  <td class="text-right font-mono" id="bs-cce-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-cce-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 40px;">(iv) Bank balances other than (iii) above (Fixed Deposits)</td>
+                  <td class="text-center">-</td>
+                  <td class="text-right font-mono" id="bs-bankoth-ind">-</td>
+                  <td class="text-right font-mono" id="bs-bankoth-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-bankoth-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(c) Other current assets (Prepaid Expenses, GST ITC)</td>
+                  <td class="text-center">-</td>
+                  <td class="text-right font-mono" id="bs-othcurrass-ind">-</td>
+                  <td class="text-right font-mono" id="bs-othcurrass-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-othcurrass-var">-</td>
+                </tr>
+                <tr class="subtotal-row" style="background: #f1f5f9; font-weight: 700; border-top: 1px solid #cbd5e1;">
+                  <td style="padding-left: 24px;">Sub-total: Current assets</td>
+                  <td></td>
+                  <td class="text-right font-mono" id="step5-bs-curr-assets">-</td>
+                  <td class="text-right font-mono" id="step5-bs-curr-assets-as">-</td>
+                  <td class="text-right font-mono" id="step5-bs-curr-assets-var">-</td>
+                </tr>
+
+                <tr class="total-row" style="background: #eff6ff; color: #1e40af; font-size: 13.5px; border-top: 2px solid #3b82f6; border-bottom: 2px solid #3b82f6;">
+                  <td style="font-weight: 800; padding: 10px 14px;">TOTAL ASSETS</td>
+                  <td></td>
+                  <td class="text-right font-mono font-bold" id="step5-bs-total-assets">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-bs-total-assets-as">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-bs-total-assets-var">-</td>
+                </tr>
+
+                <!-- II. EQUITY AND LIABILITIES -->
+                <tr style="background: #e2e8f0; font-weight: 800; color: #0f172a;">
+                  <td colspan="5" style="letter-spacing: 0.5px; font-size: 13px;">II. EQUITY AND LIABILITIES</td>
+                </tr>
+                <tr style="background: #f8fafc; font-weight: 700; color: #1e3a8a;">
+                  <td colspan="5">EQUITY</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(a) Equity Share capital</td>
+                  <td class="text-center"><a href="#socie" class="note-link">SOCIE</a></td>
+                  <td class="text-right font-mono" id="step5-bs-share-capital">-</td>
+                  <td class="text-right font-mono" id="step5-bs-share-capital-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="step5-bs-share-capital-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(b) Other Equity</td>
+                  <td class="text-center"><a href="#socie" class="note-link">SOCIE</a></td>
+                  <td class="text-right font-mono" id="step5-bs-other-equity">-</td>
+                  <td class="text-right font-mono" id="step5-bs-other-equity-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="step5-bs-other-equity-var">-</td>
+                </tr>
+                <tr class="subtotal-row" style="background: #f1f5f9; font-weight: 700; border-top: 1px solid #cbd5e1;">
+                  <td style="padding-left: 24px;">Total Equity</td>
+                  <td></td>
+                  <td class="text-right font-mono font-bold" id="step5-bs-total-equity">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-bs-total-equity-as">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-bs-total-equity-var">-</td>
+                </tr>
+
+                <tr style="background: #f8fafc; font-weight: 700; color: #1e3a8a;">
+                  <td colspan="5">LIABILITIES</td>
+                </tr>
+                <tr style="background: #f8fafc; font-weight: 700; color: #334155;">
+                  <td colspan="5">(1) Non-current liabilities</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(a) Financial Liabilities</td>
+                  <td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 40px;">(i) Borrowings (Term Loan + Redeemable Pref Shares)</td>
+                  <td class="text-center"><a href="#note-8" class="note-link">Note 8</a></td>
+                  <td class="text-right font-mono" id="bs-ncborr-ind">-</td>
+                  <td class="text-right font-mono" id="bs-ncborr-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-ncborr-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 40px;">(ia) Lease liabilities (Non-Current)</td>
+                  <td class="text-center"><a href="#note-4" class="note-link">Note 4</a></td>
+                  <td class="text-right font-mono" id="bs-ncleaseliab-ind">-</td>
+                  <td class="text-right font-mono" id="bs-ncleaseliab-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-ncleaseliab-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(b) Provisions (Long-Term Employee Gratuity)</td>
+                  <td class="text-center"><a href="#note-9" class="note-link">Note 9</a></td>
+                  <td class="text-right font-mono" id="bs-ncprov-ind">-</td>
+                  <td class="text-right font-mono" id="bs-ncprov-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-ncprov-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(c) Deferred tax liabilities (Net)</td>
+                  <td class="text-center"><a href="#note-11" class="note-link">Note 11</a></td>
+                  <td class="text-right font-mono" id="bs-dtl-ind">-</td>
+                  <td class="text-right font-mono" id="bs-dtl-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-dtl-var">-</td>
+                </tr>
+                <tr class="subtotal-row" style="background: #f1f5f9; font-weight: 700; border-top: 1px solid #cbd5e1;">
+                  <td style="padding-left: 24px;">Sub-total: Non-current liabilities</td>
+                  <td></td>
+                  <td class="text-right font-mono" id="step5-bs-nc-liab">-</td>
+                  <td class="text-right font-mono" id="step5-bs-nc-liab-as">-</td>
+                  <td class="text-right font-mono" id="step5-bs-nc-liab-var">-</td>
+                </tr>
+
+                <tr style="background: #f8fafc; font-weight: 700; color: #334155;">
+                  <td colspan="5">(2) Current liabilities</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(a) Financial Liabilities</td>
+                  <td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 40px;">(i) Borrowings (Short-Term Working Capital Loan)</td>
+                  <td class="text-center">-</td>
+                  <td class="text-right font-mono" id="bs-currborr-ind">-</td>
+                  <td class="text-right font-mono" id="bs-currborr-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-currborr-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 40px;">(ia) Lease liabilities (Current)</td>
+                  <td class="text-center"><a href="#note-4" class="note-link">Note 4</a></td>
+                  <td class="text-right font-mono" id="bs-currleaseliab-ind">-</td>
+                  <td class="text-right font-mono" id="bs-currleaseliab-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-currleaseliab-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 40px;">(ii) Trade payables:</td>
+                  <td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 56px;">(A) Total outstanding dues of MSME enterprises</td>
+                  <td class="text-center">-</td>
+                  <td class="text-right font-mono" id="bs-tpmsme-ind">-</td>
+                  <td class="text-right font-mono" id="bs-tpmsme-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-tpmsme-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 56px;">(B) Total outstanding dues of creditors other than MSME</td>
+                  <td class="text-center">-</td>
+                  <td class="text-right font-mono" id="bs-tpoth-ind">-</td>
+                  <td class="text-right font-mono" id="bs-tpoth-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-tpoth-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 40px;">(iii) Other financial liabilities (Current Maturities)</td>
+                  <td class="text-center">-</td>
+                  <td class="text-right font-mono" id="bs-currothfin-ind">-</td>
+                  <td class="text-right font-mono" id="bs-currothfin-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-currothfin-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(b) Other current liabilities (Contract Liabilities, Statutory Dues)</td>
+                  <td class="text-center"><a href="#note-10" class="note-link">Note 10</a></td>
+                  <td class="text-right font-mono" id="bs-othcurrliab-ind">-</td>
+                  <td class="text-right font-mono" id="bs-othcurrliab-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-othcurrliab-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(c) Provisions (Current Product Warranties)</td>
+                  <td class="text-center">-</td>
+                  <td class="text-right font-mono" id="bs-currprov-ind">-</td>
+                  <td class="text-right font-mono" id="bs-currprov-as">-</td>
+                  <td class="text-right font-mono font-semibold" id="bs-currprov-var">-</td>
+                </tr>
+                <tr class="subtotal-row" style="background: #f1f5f9; font-weight: 700; border-top: 1px solid #cbd5e1;">
+                  <td style="padding-left: 24px;">Sub-total: Current liabilities</td>
+                  <td></td>
+                  <td class="text-right font-mono" id="step5-bs-curr-liab">-</td>
+                  <td class="text-right font-mono" id="step5-bs-curr-liab-as">-</td>
+                  <td class="text-right font-mono" id="step5-bs-curr-liab-var">-</td>
+                </tr>
+
+                <tr class="total-row" style="background: #eff6ff; color: #1e40af; font-size: 13.5px; border-top: 2px solid #3b82f6; border-bottom: 2px solid #3b82f6;">
+                  <td style="font-weight: 800; padding: 10px 14px;">TOTAL EQUITY AND LIABILITIES</td>
+                  <td></td>
+                  <td class="text-right font-mono font-bold" id="step5-bs-total-equity-liab">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-bs-total-equity-liab-as">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-bs-total-equity-liab-var">-</td>
+                </tr>
+
+                <!-- RECONCILIATION MATCH VERIFICATION ROW -->
+                <tr style="background: #ecfdf5; color: #065f46; font-weight: bold; border-top: 2px solid #10b981;">
+                  <td style="padding: 10px 14px;">
+                    <span style="display: inline-flex; align-items: center; gap: 6px;">
+                      <span style="background: #10b981; color: white; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 13px;">✔</span>
+                      BALANCE CHECK: DIFFERENCE (ASSETS - EQUITY &amp; LIABILITIES)
+                    </span>
+                  </td>
+                  <td class="text-center" style="font-size: 11px; color: #047857;">MATCHED</td>
+                  <td class="text-right font-mono" id="bs-diff-check-ind" style="font-size: 13px; color: #047857;">₹0.00</td>
+                  <td class="text-right font-mono" id="bs-diff-check-as" style="font-size: 13px; color: #047857;">₹0.00</td>
+                  <td class="text-right font-mono" style="font-size: 12px; color: #047857;">₹0.00 (Balanced)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Subtab 2: Statement of Profit and Loss (Division II Schedule III) -->
+        <div id="subtab-pnl" class="subtab-pane">
+          <div style="margin-bottom: 12px; display: flex; justify-content: space-between; align-items: flex-end;">
+            <div>
+              <h3 style="margin: 0; font-size: 16px; color: #0f172a; font-weight: 700;">Statement of Profit and Loss</h3>
+              <p style="margin: 3px 0 0; font-size: 12px; color: #64748b;">Prepared in compliance with Division II Schedule III and Ind AS 1 (with OCI) (₹ in Lakhs)</p>
+            </div>
+            <div style="font-size: 11.5px; color: #475569; background: #f1f5f9; padding: 4px 10px; border-radius: 4px; border: 1px solid #cbd5e1;">
+              Reporting Currency: <strong>INR (₹ in Lakhs)</strong>
+            </div>
+          </div>
+
+          <div class="table-wrapper" style="box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; border-radius: 8px;">
+            <table class="app-table" style="margin-bottom: 0;">
+              <thead>
+                <tr style="background: #0f172a; color: #ffffff;">
+                  <th style="color: #f8fafc; font-size: 12.5px; padding: 10px 14px;">Particulars</th>
+                  <th style="width: 90px; text-align: center; color: #94a3b8; font-size: 12px;">Note No.</th>
+                  <th class="text-right" style="width: 170px; color: #cbd5e1; font-size: 12.5px; padding: 10px 14px;" id="col-header-as-pnl">Previous GAAP (AS)<br><span style="font-size: 10px; font-weight: normal; color: #cbd5e1;">(₹ in Lakhs)</span></th>
+                  <th class="text-right" style="width: 170px; color: #f8fafc; font-size: 12.5px; padding: 10px 14px;" id="col-header-indas-pnl">Ind AS<br><span style="font-size: 10px; font-weight: normal; color: #93c5fd;">(₹ in Lakhs)</span></th>
+                  <th class="text-right" style="width: 140px; color: #a5f3fc; font-size: 12.5px; padding: 10px 14px;">Ind AS Impact<br><span style="font-size: 10px; font-weight: normal; color: #a5f3fc;">(Variance)</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight: 600;">I. Revenue from Operations</td>
+                  <td class="text-center"><a href="#note-10" class="note-link">Note 10</a></td>
+                  <td class="text-right font-mono" id="step5-pnl-rev-as">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-rev-ind">-</td>
+                  <td class="text-right font-mono font-semibold" id="step5-pnl-rev-var">-</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">II. Other Income (Includes MTM Gain on Mutual Funds)</td>
+                  <td class="text-center"><a href="#note-6" class="note-link">Note 6</a></td>
+                  <td class="text-right font-mono" id="step5-pnl-othinc-as">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-othinc-ind">-</td>
+                  <td class="text-right font-mono font-semibold" id="step5-pnl-othinc-var">-</td>
+                </tr>
+                <tr class="total-row" style="background: #f1f5f9; border-top: 1px solid #cbd5e1;">
+                  <td style="font-weight: 700;">III. Total Income (I + II)</td>
+                  <td></td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-totinc-as">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-totinc-ind">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-totinc-var">-</td>
+                </tr>
+                <tr style="background: #f8fafc; font-weight: 700; color: #1e3a8a;">
+                  <td colspan="5">IV. EXPENSES</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(a) Cost of materials consumed</td>
+                  <td class="text-center">-</td>
+                  <td class="text-right font-mono" id="step5-pnl-mat-as">-</td>
+                  <td class="text-right font-mono" id="step5-pnl-mat-ind">-</td>
+                  <td class="text-right font-mono font-semibold" id="step5-pnl-mat-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(b) Changes in inventories of finished goods and WIP</td>
+                  <td class="text-center">-</td>
+                  <td class="text-right font-mono" id="step5-pnl-inv-as">-</td>
+                  <td class="text-right font-mono" id="step5-pnl-inv-ind">-</td>
+                  <td class="text-right font-mono font-semibold" id="step5-pnl-inv-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(c) Employee benefits expense (Net of Actuarial in OCI)</td>
+                  <td class="text-center"><a href="#note-9" class="note-link">Note 9</a></td>
+                  <td class="text-right font-mono" id="step5-pnl-emp-as">-</td>
+                  <td class="text-right font-mono" id="step5-pnl-emp-ind">-</td>
+                  <td class="text-right font-mono font-semibold" id="step5-pnl-emp-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(d) Finance costs (Term Loan + Lease Interest + Pref Dividend)</td>
+                  <td class="text-center"><a href="#note-4" class="note-link">Note 4/8</a></td>
+                  <td class="text-right font-mono" id="step5-pnl-fin-as">-</td>
+                  <td class="text-right font-mono" id="step5-pnl-fin-ind">-</td>
+                  <td class="text-right font-mono font-semibold" id="step5-pnl-fin-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(e) Depreciation and amortisation expense (PPE + ROU + Software)</td>
+                  <td class="text-center"><a href="#note-3" class="note-link">Note 3/4</a></td>
+                  <td class="text-right font-mono" id="step5-pnl-depr-as">-</td>
+                  <td class="text-right font-mono" id="step5-pnl-depr-ind">-</td>
+                  <td class="text-right font-mono font-semibold" id="step5-pnl-depr-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(f) Other expenses (Rent reversed, ECL added)</td>
+                  <td class="text-center"><a href="#note-7" class="note-link">Note 7</a></td>
+                  <td class="text-right font-mono" id="step5-pnl-other-as">-</td>
+                  <td class="text-right font-mono" id="step5-pnl-other-ind">-</td>
+                  <td class="text-right font-mono font-semibold" id="step5-pnl-other-var">-</td>
+                </tr>
+                <tr class="total-row" style="background: #f1f5f9; border-top: 1px solid #cbd5e1;">
+                  <td style="font-weight: 700;">Total Expenses (IV)</td>
+                  <td></td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-totexp-as">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-totexp-ind">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-totexp-var">-</td>
+                </tr>
+
+                <tr style="background: #f8fafc; font-weight: 700; color: #0f172a; border-top: 2px solid #cbd5e1;">
+                  <td>V. Profit Before Tax (PBT) (III - IV)</td>
+                  <td></td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-pbt-as">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-pbt-ind" style="color: #1e3a8a;">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-pbt-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">VI. Tax expense (Current Tax + Deferred Tax)</td>
+                  <td class="text-center"><a href="#note-11" class="note-link">Note 11</a></td>
+                  <td class="text-right font-mono" id="step5-pnl-tax-as">-</td>
+                  <td class="text-right font-mono" id="step5-pnl-tax-ind">-</td>
+                  <td class="text-right font-mono font-semibold" id="step5-pnl-tax-var">-</td>
+                </tr>
+                <tr class="total-row" style="background: #ecfdf5; color: #065f46; font-size: 13px; border-top: 2px solid #10b981;">
+                  <td style="font-weight: 800;">VII. Profit for the period (PAT) (V - VI)</td>
+                  <td></td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-pat-as">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-pat-ind">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-pat-var">-</td>
+                </tr>
+
+                <tr style="background: #f8fafc; font-weight: 700; color: #1e3a8a; border-top: 2px solid #cbd5e1;">
+                  <td colspan="5">VIII. OTHER COMPREHENSIVE INCOME (OCI) (Net of Tax)</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(A) Items that will not be reclassified to profit or loss:</td>
+                  <td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 40px;">(i) Remeasurements of defined benefit plans (Ind AS 19)</td>
+                  <td class="text-center"><a href="#note-9" class="note-link">Note 9</a></td>
+                  <td class="text-right font-mono">₹0.00</td>
+                  <td class="text-right font-mono" id="step5-pnl-oci-actuarial">-</td>
+                  <td class="text-right font-mono" id="step5-pnl-oci-actuarial-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 40px;">(ii) Equity instruments through Other Comprehensive Income (Ind AS 109)</td>
+                  <td class="text-center"><a href="#note-6" class="note-link">Note 6</a></td>
+                  <td class="text-right font-mono">₹0.00</td>
+                  <td class="text-right font-mono" id="step5-pnl-oci-equity">-</td>
+                  <td class="text-right font-mono" id="step5-pnl-oci-equity-var">-</td>
+                </tr>
+                <tr class="subtotal-row" style="background: #f1f5f9; font-weight: 700;">
+                  <td style="padding-left: 24px;">Total Other Comprehensive Income (OCI)</td>
+                  <td></td>
+                  <td class="text-right font-mono">₹0.00</td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-oci-val">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-oci-tot-var">-</td>
+                </tr>
+
+                <tr class="total-row" style="background: #eff6ff; color: #1e40af; font-size: 13.5px; border-top: 2px solid #3b82f6; border-bottom: 2px solid #3b82f6;">
+                  <td style="font-weight: 800; padding: 10px 14px;">IX. TOTAL COMPREHENSIVE INCOME FOR THE PERIOD (TCI) (VII + VIII)</td>
+                  <td></td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-tci-as">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-tci-val">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-tci-var">-</td>
+                </tr>
+
+                <!-- Earnings Per Share -->
+                <tr style="background: #f8fafc; font-weight: 700; color: #0f172a;">
+                  <td colspan="5">X. EARNINGS PER EQUITY SHARE (Face Value ₹10 per share)</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(1) Basic (₹)</td>
+                  <td class="text-center"><a href="#note-12" class="note-link">Note 12</a></td>
+                  <td class="text-right font-mono" id="step5-pnl-eps-basic-as">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-eps-basic-ind">-</td>
+                  <td class="text-right font-mono font-semibold" id="step5-pnl-eps-basic-var">-</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">(2) Diluted (₹)</td>
+                  <td class="text-center"><a href="#note-12" class="note-link">Note 12</a></td>
+                  <td class="text-right font-mono" id="step5-pnl-eps-diluted-as">-</td>
+                  <td class="text-right font-mono font-bold" id="step5-pnl-eps-diluted-ind">-</td>
+                  <td class="text-right font-mono font-semibold" id="step5-pnl-eps-diluted-var">-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Subtab 3: SOCIE -->
+        <div id="subtab-socie" class="subtab-pane">
+          <h4 style="font-size: 14px; margin-bottom: 8px;">Part A: Equity Share Capital</h4>
+          <div class="table-wrapper" style="margin-bottom: 20px;">
+            <table class="app-table">
+              <thead>
+                <tr>
+                  <th>Opening Balance as of Transition Date</th>
+                  <th>Changes during the year</th>
+                  <th>Closing Balance as of Year End</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-mono font-bold" id="socie-sc-opening">₹0.00 L</td>
+                  <td class="font-mono">₹0.00 L</td>
+                  <td class="font-mono font-bold" id="socie-sc-closing">₹0.00 L</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 style="font-size: 14px; margin-bottom: 8px;">Part B: Other Equity</h4>
+          <div class="table-wrapper">
+            <table class="app-table">
+              <thead>
+                <tr>
+                  <th>Particulars</th>
+                  <th class="text-right">Securities Premium</th>
+                  <th class="text-right">General Reserve</th>
+                  <th class="text-right">Retained Earnings</th>
+                  <th class="text-right">FVTOCI Reserve</th>
+                  <th class="text-right">Total Other Equity</th>
+                </tr>
+              </thead>
+              <tbody id="socie-other-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Subtab 4: Cash Flow Statement -->
+        <div id="subtab-cashflow" class="subtab-pane">
+          <div class="table-wrapper">
+            <table class="app-table">
+              <thead>
+                <tr>
+                  <th>Particulars (Ind AS 7 Indirect Method)</th>
+                  <th class="text-right" style="width: 160px;">Amount (₹ Lakhs)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background: #f8fafc; font-weight: 700;"><td colspan="2">A. CASH FLOWS FROM OPERATING ACTIVITIES</td></tr>
+                <tr><td>Profit Before Tax (PBT)</td><td class="text-right font-mono" id="cf-pbt">-</td></tr>
+                <tr><td>Adjustments for Non-Cash Items (Depreciation, Finance Costs, ECL, MTM gain)</td><td class="text-right font-mono" id="cf-noncash">-</td></tr>
+                <tr class="total-row"><td>Operating Profit before Working Capital Changes</td><td class="text-right font-mono font-bold" id="cf-op-profit">-</td></tr>
+                <tr><td>Adjustments for Working Capital changes (Inventories, Debtors, Payables)</td><td class="text-right font-mono" id="cf-wc-changes">-</td></tr>
+                <tr><td>Direct Taxes Paid</td><td class="text-right font-mono" id="cf-taxes">-</td></tr>
+                <tr class="total-row" style="background: #ecfdf5;"><td>Net Cash Generated from Operating Activities (A)</td><td class="text-right font-mono font-bold" id="cf-net-operating">-</td></tr>
+
+                <tr style="background: #f8fafc; font-weight: 700;"><td colspan="2">B. CASH FLOWS FROM INVESTING ACTIVITIES</td></tr>
+                <tr><td>Purchase of Property, Plant &amp; Equipment (Capex)</td><td class="text-right font-mono">-₹1,850.00 L</td></tr>
+                <tr><td>Rental &amp; Interest Received</td><td class="text-right font-mono">+₹178.00 L</td></tr>
+                <tr class="total-row"><td>Net Cash used in Investing Activities (B)</td><td class="text-right font-mono font-bold" id="cf-net-investing">-</td></tr>
+
+                <tr style="background: #f8fafc; font-weight: 700;"><td colspan="2">C. CASH FLOWS FROM FINANCING ACTIVITIES</td></tr>
+                <tr><td>Repayment of Term Loans &amp; Lease Principal</td><td class="text-right font-mono">-₹1,600.03 L</td></tr>
+                <tr><td>Finance Costs Paid</td><td class="text-right font-mono" id="cf-fin-paid">-</td></tr>
+                <tr class="total-row"><td>Net Cash used in Financing Activities (C)</td><td class="text-right font-mono font-bold" id="cf-net-financing">-</td></tr>
+
+                <tr class="total-row" style="background: #eff6ff; color: #1e40af;"><td>NET INCREASE / (DECREASE) IN CASH &amp; CASH EQUIVALENTS</td><td class="text-right font-mono font-bold" id="cf-net-change">-</td></tr>
+                <tr><td>Cash and Cash Equivalents at Beginning of Year</td><td class="text-right font-mono">₹425.00 L</td></tr>
+                <tr class="total-row"><td>Cash and Cash Equivalents at End of Year</td><td class="text-right font-mono font-bold" id="cf-cash-closing">-</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Subtab 5: Notes to Accounts (Structured ICAI Tables) -->
+        <div id="subtab-notes" class="subtab-pane">
+          <div id="notes-cards-container" style="display: flex; flex-direction: column; gap: 20px;"></div>
+        </div>
+
+        <!-- Subtab 6: Ind AS 101 Reconciliations -->
+        <div id="subtab-recon" class="subtab-pane">
+          <h4 style="font-size: 14px; margin-bottom: 10px;">Part 1: Equity Reconciliation as of Year End</h4>
+          <div class="table-wrapper" style="margin-bottom: 24px;">
+            <table class="app-table">
+              <thead>
+                <tr>
+                  <th>Line Item / Adjustment</th>
+                  <th style="width: 120px;">Ind AS Ref</th>
+                  <th style="width: 140px;" class="text-right">Amount (₹ L)</th>
+                  <th>Statutory Explanation</th>
+                </tr>
+              </thead>
+              <tbody id="step5-equity-recon-tbody"></tbody>
+            </table>
+          </div>
+
+          <h4 style="font-size: 14px; margin-bottom: 10px;">Part 2: Profit or Loss to Total Comprehensive Income Reconciliation</h4>
+          <div class="table-wrapper">
+            <table class="app-table">
+              <thead>
+                <tr>
+                  <th>Adjustment Item</th>
+                  <th style="width: 120px;">Ind AS Ref</th>
+                  <th style="width: 140px;" class="text-right">Amount (₹ L)</th>
+                  <th>Statutory Explanation</th>
+                </tr>
+              </thead>
+              <tbody id="step5-profit-recon-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Subtab 7: Converted 6-Col TB -->
+        <div id="subtab-convtb" class="subtab-pane">
+          <div class="table-wrapper" style="max-height: 480px;">
+            <table class="app-table">
+              <thead style="position: sticky; top: 0; z-index: 5;">
+                <tr>
+                  <th rowspan="2" style="width: 70px;">Code</th>
+                  <th rowspan="2">Account Description</th>
+                  <th colspan="2" class="text-center" style="background: #f1f5f9;">Previous AS</th>
+                  <th colspan="2" class="text-center" style="background: #fef3c7;">Adjustments</th>
+                  <th colspan="2" class="text-center" style="background: #dbeafe;">Final Ind AS</th>
+                </tr>
+                <tr>
+                  <th class="text-right" style="width: 90px;">Dr (₹)</th>
+                  <th class="text-right" style="width: 90px;">Cr (₹)</th>
+                  <th class="text-right" style="width: 90px;">Dr (₹)</th>
+                  <th class="text-right" style="width: 90px;">Cr (₹)</th>
+                  <th class="text-right" style="width: 95px;">Dr (₹)</th>
+                  <th class="text-right" style="width: 95px;">Cr (₹)</th>
+                </tr>
+              </thead>
+              <tbody id="step5-convtb-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="wizard-footer">
+        <button type="button" class="btn btn-secondary btn-back" data-goto="4">
+          ← Back to Adjustments
+        </button>
+        <button type="button" id="btn-goto-step-6" class="btn btn-primary btn-lg">
+          Proceed to Disclosures &amp; Final Export (Step 6) →
+        </button>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- STEP 6: DISCLOSURES & 10-SHEET EXCEL EXPORT -->
+    <!-- ================================================================= -->
+    <section id="wizard-step-6" class="wizard-step">
+      <div class="step-header">
+        <span class="badge-step">Step 6 of 6</span>
+        <h2>Statutory Disclosures &amp; Excel Financials Export</h2>
+        <p>Download the complete Ind AS Financial Statements Workbook containing Balance Sheet, Statement of Profit and Loss, SOCIE, Cash Flow Statement, Structured Notes to Accounts, and Flagged Conversion Journal Entries.</p>
+      </div>
+
+      <!-- Export Card -->
+      <div class="card" style="background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%); border: 1px solid #bfdbfe;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <h3 style="font-size: 18px; color: #1e3a8a; margin-bottom: 4px;">📥 Download Complete Ind AS Financial Statements &amp; Notes (.xls)</h3>
+            <p style="font-size: 13px; color: var(--text-muted); max-width: 680px;">
+              Generates an accountant-ready 10-sheet workbook with Balance Sheet, Statement of Profit &amp; Loss, SOCIE, Cash Flow Statement (Ind AS 7), Statutory Notes 1–14 with tables, Flagged Journal Entries with narrations, and Ind AS 101 Reconciliations.
+            </p>
+          </div>
+          <div>
+            <button type="button" id="btn-final-export" class="btn btn-success btn-lg">
+              📥 Download Ind AS Financials Workbook
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ICAI Disclosure Checklist Card -->
+      <div class="card">
+        <div class="card-title-bar">
+          <h3>📋 ICAI Ind AS Compliance Checklist</h3>
+          <span class="badge badge-info">14 Core Disclosures Mapped</span>
+        </div>
+        <div class="table-wrapper" style="max-height: 400px;">
+          <table class="app-table">
+            <thead style="position: sticky; top: 0; z-index: 5;">
+              <tr>
+                <th style="width: 70px;">Ref</th>
+                <th style="width: 100px;">Ind AS</th>
+                <th>Disclosure Topic</th>
+                <th>Information Required</th>
+                <th style="width: 120px;">Review Status</th>
+                <th style="width: 140px;">Assignee</th>
+              </tr>
+            </thead>
+            <tbody id="step6-disclosure-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="wizard-footer">
+        <button type="button" class="btn btn-secondary btn-back" data-goto="5">
+          ← Back to Financial Statements
+        </button>
+        <button type="button" class="btn btn-secondary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+          ↑ Back to Top
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal for Assumptions Review -->
+  <div class="modal-overlay" id="management-input-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 id="modal-mi-title">Review / Edit Accounting Assumptions</h3>
+        <button class="modal-close modal-close-trigger">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-mi-body"></div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary modal-close-trigger">Cancel</button>
+        <button class="btn btn-primary" id="btn-modal-save">Apply &amp; Recalculate</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="data/sample-data.js"></script>
+  <script src="js/applicability-engine.js"></script>
+  <script src="js/adjustment-engine.js"></script>
+  <script src="js/reclassification-engine.js"></script>
+  <script src="js/financial-statements.js"></script>
+  <script src="js/disclosure-checker.js"></script>
+  <script src="js/excel-export.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
